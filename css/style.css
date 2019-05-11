@@ -9,6 +9,12 @@
 }
 body {
   font-family: Rubik;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
 }
 ul.browser-default {
   padding-inline-start: 1rem;
@@ -51,7 +57,7 @@ ul.browser-default {
   h6 {
     font-size: 0.8625rem;
   }
-  .no-print {
+  .no-print, .no-print * {
     display: none !important;
   }
 }
