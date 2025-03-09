@@ -3,12 +3,21 @@ export enum Categories {
   GALLERY = 'gallery',
   MISC = 'misc'
 }
+
+export type ImageType = {
+  img: string,
+  title: string,
+  rows?: number,
+  cols?: number,
+}
+
 export type Contents = {
   id: string,
   title: string,
   category: Categories,
   date: string,
+  place: string,
   content: string,
   thumbSrc: string,
-  imageSrcs: string[],
+  images?: ImageType[],
 }

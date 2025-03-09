@@ -40,7 +40,7 @@ export const BlogCard = ({
           subheader={date}
           action={
             <Tooltip title="Open" placement="left">
-              <IconButton aria-label="View" onClick={() => { navigate(`contents/${id}`); }}>
+              <IconButton aria-label="View" onClick={() => { navigate(`/contents/${id}`); }}>
                 <OpenInNew />
               </IconButton>
             </Tooltip>

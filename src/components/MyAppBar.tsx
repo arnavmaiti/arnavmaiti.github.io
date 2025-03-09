@@ -42,7 +42,7 @@ export const MyAppBar = (): ReactElement => {
 
   return (
     <AppBar
-      position="fixed"
+      position="absolute"
       sx={{
         boxShadow: 0,
         bgcolor: 'transparent',
