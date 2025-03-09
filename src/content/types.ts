@@ -1,5 +1,5 @@
 export enum Categories {
-  TRIPS = 'trips',
+  BLOG = 'blog',
   GALLERY = 'gallery',
   MISC = 'misc'
 }

@@ -1,6 +1,5 @@
-import { AirplaneTicket, Collections, OpenInNew, Share } from "@mui/icons-material";
+import { AutoStories, OpenInNew, PhotoCamera, Share } from "@mui/icons-material";
 import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Tooltip, Typography } from "@mui/material";
-import { colors } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { ReactElement } from "react";
 import { Categories, Contents } from "../content/types";
@@ -15,23 +14,12 @@ export const BlogCard = ({
   thumbSrc
 }: Contents): ReactElement => {
 
-  const avatarColors = [
-    colors.red[600], colors.pink[600], colors.purple[600], 
-    colors.deepPurple[600], colors.indigo[600], colors.blue[600], 
-    colors.lightBlue[600], colors.cyan[600], colors.teal[600], 
-    colors.green[600], colors.lightGreen[600], colors.lime[600],
-    colors.yellow[600], colors.amber[600], colors.orange[600],
-    colors.deepOrange[600], colors.brown[600], colors.grey[600],
-    colors.blueGrey[600]
-  ];
-  const pickedColor = avatarColors[Math.floor(Math.random() * avatarColors.length)];
-
   const pickedCategory = () => {
     switch (category) {
-      case Categories.TRIPS:
-        return <Tooltip title="Trips"><AirplaneTicket /></Tooltip>;
+      case Categories.BLOG:
+        return <Tooltip title="Blog"><AutoStories /></Tooltip>;
       case Categories.GALLERY:
-        return <Tooltip title="Gallery"><Collections /></Tooltip>;
+        return <Tooltip title="Gallery"><PhotoCamera /></Tooltip>;
       default:
         return title.charAt(0).toUpperCase();
     }
@@ -44,15 +32,15 @@ export const BlogCard = ({
       <Card>
         <CardHeader
           avatar={
-            <Avatar sx={{ bgcolor: pickedColor }} aria-label="recipe">
+            <Avatar aria-label="recipe" sx={{ backgroundColor: 'secondary.main' }}>
               {pickedCategory()}
             </Avatar>
           } 
           title={title}
           subheader={date}
           action={
-            <Tooltip title="Open Blog" placement="left">
-              <IconButton aria-label="View" onClick={() => { navigate(`blogs/${id}`); }}>
+            <Tooltip title="Open" placement="left">
+              <IconButton aria-label="View" onClick={() => { navigate(`contents/${id}`); }}>
                 <OpenInNew />
               </IconButton>
             </Tooltip>

@@ -17,7 +17,7 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
 export const FooterButtons = () => {
   return (
     <Box position="fixed" 
-      sx={{ display: 'flex', bottom: 0, right: 0, mr: 9, flexDirection: 'column' }}
+      sx={{ display: 'flex', bottom: 0, right: 0, mr: 6, flexDirection: 'column' }}
     >
       <Container>
         <Tooltip title="Github" placement="left">

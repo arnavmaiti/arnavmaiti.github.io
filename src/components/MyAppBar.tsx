@@ -19,7 +19,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   fontSize: 16, 
   textTransform: 'none', 
   '&:hover': { 
-    color: colors.blueGrey[400] 
+    color: theme.palette.secondary.main 
   }
 }));
 
@@ -66,21 +66,29 @@ export const MyAppBar = (): ReactElement => {
             <StyledButton
               size="large" 
               startIcon={<AutoStories />}
-              onClick={() => navigate('blogs')}
+              onClick={() => navigate('/contents/blog/1')}
             >
               Blog
             </StyledButton>
             <StyledButton 
               size="large" 
               startIcon={<PhotoCamera />}
-              onClick={() => navigate('gallery')}
+              onClick={() => navigate('/contents/gallery/1')}
             >
               Gallery
             </StyledButton>
-            <StyledButton size="large" startIcon={<PersonSharp />}>
+            <StyledButton 
+              size="large" 
+              startIcon={<PersonSharp />}
+              onClick={() => navigate('/portfolio')}
+            >
               Portfolio
             </StyledButton>
-            <StyledButton size="large" startIcon={<FaceSharp />}>
+            <StyledButton 
+              size="large" 
+              startIcon={<FaceSharp />}
+              onClick={() => navigate('/aboutme')}
+            >
               About Me
             </StyledButton>
           </Box>

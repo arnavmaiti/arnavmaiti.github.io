@@ -2,7 +2,7 @@ import { Categories, Contents } from "./types";
 
 export const Blogs: Contents[] = [
   {
-    id: "1",
+    id: "",
     title: "A Trip to Yosemite",
     category: Categories.GALLERY,
     date: "November 15, 2024",

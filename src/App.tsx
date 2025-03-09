@@ -6,9 +6,11 @@ import './App.css';
 import { colors, Container, createTheme, ThemeProvider } from '@mui/material';
 import { MyAppBar } from './components/MyAppBar';
 import { FooterButtons } from './components/FooterButtons';
-import { MainContentArea } from './components/MainContentArea';
+import { LandingPage } from './components/LandingPage';
 import { BrowserRouter, Route, Routes, useParams } from 'react-router-dom';
 import { ReactElement } from 'react';
+import { BlogPage } from './components/BlogPage';
+import { GalleryPage } from './components/GalleryPage';
 
 export const App = () => {
   
@@ -25,7 +27,7 @@ export const App = () => {
 
   const Blog = (): ReactElement => {
     const params = useParams();
-    return (<div>Blog {params.page}</div>);
+    return (<div>Blog {params.page} Placeholder. Content Coming Soon...</div>);
   };
 
   return (
@@ -33,11 +35,16 @@ export const App = () => {
       <ThemeProvider theme={theme} disableTransitionOnChange noSsr>
         <Container sx={{ height: '100vh' }}>
           <MyAppBar/>
+          <Container sx={{ mt: 20 }}>
           <Routes>
-            <Route path="" element={<MainContentArea />} />
-            <Route path="blogs" element={<>Blogs</>} />
-            <Route path="blogs/:page" element={<Blog />} />
+            <Route path="" element={<LandingPage />} />
+            <Route path="contents/blog/:page" element={<BlogPage />} />
+            <Route path="contents/gallery/:page" element={<GalleryPage />} />
+            <Route path="portfolio" element={<>Portfolio Placeholder. Content Coming Soon...</>} />
+            <Route path="aboutme" element={<>About Me Placeholder. Content Coming Soon...</>} />
+            <Route path="contents/:page" element={<Blog />} />
           </Routes>
+          </Container>
           <FooterButtons />
         </Container>
       </ThemeProvider>
