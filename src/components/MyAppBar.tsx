@@ -1,6 +1,7 @@
 import { AutoStories, Cottage, FaceSharp, PersonSharp, PhotoCamera } from "@mui/icons-material";
-import { alpha, AppBar, Box, Button, Container, IconButton, styled, Toolbar, Tooltip } from "@mui/material";
+import { AppBar, Box, Button, colors, Container, IconButton, styled, Toolbar, Tooltip } from "@mui/material";
 import { ReactElement } from "react";
+import { useNavigate } from "react-router-dom";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
@@ -8,13 +9,36 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   justifyContent: 'space-between',
   flexShrink: 0,
   borderRadius: `calc(${theme.shape.borderRadius}px + 8px)`,
-  backdropFilter: 'blur(10px)',
-  backgroundColor: alpha(theme.palette.primary.main, 0.3),
-  boxShadow: 'hsla(220, 30%, 5%, 0.07) 0px 4px 16px 0px, hsla(220, 25%, 10%, 0.07) 0px 8px 16px -5px',
-  padding: '8px 12px',
+  backgroundColor: theme.palette.primary.main,
+}));
+
+const StyledButton = styled(Button)(({ theme }) => ({
+  color: "inherit",
+  marginLeft: 16, 
+  marginRight: 16, 
+  fontSize: 16, 
+  textTransform: 'none', 
+  '&:hover': { 
+    color: colors.blueGrey[400] 
+  }
+}));
+
+const StyledIconButton = styled(IconButton)(({ theme }) => ({
+  color: "inherit",
+  marginLeft: 0, 
+  marginTop: 16,
+  marginBottom: 16,
+  marginRight: 32, 
+  fontSize: 16, 
+  textTransform: 'none', 
+  '&:hover': { 
+    color: colors.blueGrey[400] 
+  }
 }));
 
 export const MyAppBar = (): ReactElement => {
+
+  const navigate = useNavigate();
 
   return (
     <AppBar
@@ -30,28 +54,35 @@ export const MyAppBar = (): ReactElement => {
         <StyledToolbar variant="dense">
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
             <Tooltip title="Home">
-              <IconButton
+              <StyledIconButton
                 size="large"
                 edge="start"
-                color="inherit"
                 aria-label="menu"
-                sx={{ ml: 0.5, mt: 1, mr: 4, mb: 1 }}
+                onClick={() => navigate('')}
               >
                 <Cottage />
-              </IconButton>
+              </StyledIconButton>
             </Tooltip>
-            <Button sx={{ color: 'inherit', mt: 0.3, ml: 2, mr: 2, fontSize: 16, textTransform: 'none' }} startIcon={<AutoStories />}>
+            <StyledButton
+              size="large" 
+              startIcon={<AutoStories />}
+              onClick={() => navigate('blogs')}
+            >
               Blog
-            </Button>
-            <Button sx={{ color: 'inherit', mt: 0.3, ml: 2, mr: 2, fontSize: 16, textTransform: 'none' }} startIcon={<PhotoCamera />}>
+            </StyledButton>
+            <StyledButton 
+              size="large" 
+              startIcon={<PhotoCamera />}
+              onClick={() => navigate('gallery')}
+            >
               Gallery
-            </Button>
-            <Button sx={{ color: 'inherit', mt: 0.3, ml: 2, mr: 2, fontSize: 16, textTransform: 'none' }} startIcon={<PersonSharp />}>
+            </StyledButton>
+            <StyledButton size="large" startIcon={<PersonSharp />}>
               Portfolio
-            </Button>
-            <Button sx={{ color: 'inherit', mt: 0.3, ml: 2, mr: 2, fontSize: 16, textTransform: 'none' }} startIcon={<FaceSharp />}>
+            </StyledButton>
+            <StyledButton size="large" startIcon={<FaceSharp />}>
               About Me
-            </Button>
+            </StyledButton>
           </Box>
         </StyledToolbar>
       </Container>
