@@ -46,6 +46,9 @@ nav.main-nav>a.nav-link {
   text-decoration: none;
   color: light-dark(var(--dark-main), var(--light-main));
 }
+nav.main-nav>a.nav-link:first-child {
+  margin: 0 0 0 0;
+}
 nav.main-nav>a.nav-link>i {
   font-size: 1.5rem;
 }
@@ -149,11 +152,11 @@ div.intro-container>nav.intro-links>a:hover {
     height: 9rem;
   }
   nav.main-nav {
-  position: absolute;
-  display: block;
-  top: 1rem;
-  left: 1rem;
-  padding: 0;
-  margin: 0;
-}
+    position: absolute;
+    display: block;
+    top: 1rem;
+    left: 1rem;
+    padding: 0;
+    margin: 0;
+  }
 }
