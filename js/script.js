@@ -8,7 +8,8 @@ $(document).ready(() => {
     $('.toggle-button a.toggle-mode i.fa-solid').removeClass('fa-moon').addClass('fa-sun');
   }
 
-  $('.toggle-mode').click(() => {
+  $('.toggle-mode').click((e) => {
+    e.preventDefault();
     const currentColorScheme = $('html').css('color-scheme');
     if (currentColorScheme === 'dark') {
       $('html').css('color-scheme', 'light');
