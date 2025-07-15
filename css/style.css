@@ -27,7 +27,7 @@ nav.main-nav {
   position: absolute;
   display: block;
   top: 1rem;
-  right: 1rem;
+  left: calc(50% - 13.5rem);
   padding: 0;
   margin: 0;
 }
@@ -55,7 +55,7 @@ nav.main-nav>a.nav-link>i {
 nav.main-nav>a.nav-link:hover {
   color: var(--hover-color);
 }
-div.intro-container {
+div.intro-page-container {
   position: absolute;
   margin: 0;
   padding: 0;
@@ -65,7 +65,7 @@ div.intro-container {
   height: 9rem;
   border-radius: 0.5rem;
 }
-div.intro-container>p.intro-image {
+div.intro-page-container>p.intro-image {
   display: inline-block;
   position: absolute;
   padding: 0;
@@ -80,7 +80,7 @@ div.intro-container>p.intro-image {
   background-color: light-dark(var(--dark-main), var(--light-main));
   border-radius: 50%;
 }
-div.intro-container>h1.intro-name {
+div.intro-page-container>h1.intro-name {
   position: absolute;
   display: inline-block;
   padding: 0;
@@ -93,7 +93,7 @@ div.intro-container>h1.intro-name {
   font-weight: 600;
   border-bottom: 1px solid light-dark(var(--light-main), var(--dark-main));
 }
-div.intro-container>p.intro-title {
+div.intro-page-container>p.intro-title {
   position: absolute;
   display: inline-block;
   padding: 0;
@@ -105,7 +105,7 @@ div.intro-container>p.intro-title {
   font-size: 0.75rem;
   font-weight: 400;
 }
-div.intro-container>nav.intro-links {
+div.intro-page-container>nav.intro-links {
   position: absolute;
   display: block;
   padding: 0;
@@ -113,6 +113,85 @@ div.intro-container>nav.intro-links {
   top: 6.5rem;
   left: 1rem;
   width: 100%;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+div.intro-page-container>nav.intro-links>a {
+  text-decoration: none;
+  color: light-dark(var(--dark-main), var(--light-main));
+  margin: 0 0.5rem 0 0;
+}
+div.intro-page-container>nav.intro-links>a:hover {
+  color: var(--hover-color);
+}
+div.intro-container {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 6.5rem;
+  left: calc(50% - 22.5rem);
+  width: 25rem;
+  height: 12rem;
+  border-radius: 0.5rem;
+}
+div.intro-container>p.intro-image {
+  display: inline-block;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  left: 1rem;
+  top: 1rem;
+  width: 7.5rem;
+  height: 7.5rem;
+  background-image: url('../images/avatar.jpg');
+  background-position: center;
+  background-size: contain;
+  background-color: light-dark(var(--dark-main), var(--light-main));
+  border-radius: 50%;
+}
+div.intro-container>h1.intro-name {
+  position: absolute;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  top: 1rem;
+  left: 7.5rem;
+  width: calc(100% - 7.5rem);
+  text-align: left;
+  text-indent: 2.5rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  border-bottom: 1px solid light-dark(var(--light-main), var(--dark-main));
+}
+div.intro-container>div.intro-title {
+  position: absolute;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  top: 4rem;
+  left: 10rem;
+  width: calc(100% - 10rem);
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 0.5rem;
+}
+div.intro-container>div.intro-title>ul {
+  padding: 0;
+  margin: 0;
+}
+div.intro-container>div.intro-title>ul>li {
+  line-height: 1rem;
+}
+
+div.intro-container>nav.intro-links {
+  position: absolute;
+  display: block;
+  padding: 0;
+  margin: 0;
+  top: 9.5rem;
+  left: 1rem;
+  width: calc(100% - 2rem);
   font-size: 1.5rem;
   font-weight: 400;
 }
@@ -124,57 +203,12 @@ div.intro-container>nav.intro-links>a {
 div.intro-container>nav.intro-links>a:hover {
   color: var(--hover-color);
 }
-div.feature-container {
-  position: absolute;
-  display: block;
-  padding: 0;
-  margin: 0;
-  left: calc(50% - 12rem);
-  top: 7.5rem;
-  width: 23rem;
-  height: 7rem;
-  background-color: transparent;
-}
-div.feature-container>div.feature {
-  position: absolute;
-  display: inline-block;
-  top: 0;
-  width: 7rem;
-  height: 7rem;
-  margin: 0;
-  padding: 1.75rem 1rem 1rem 1rem;
-  border-radius: 0.5rem;
-  text-align: center;
-  font-size: 2.25rem;
-  box-sizing: border-box;
-  line-height: 1rem;
-  cursor: pointer;
-}
-div.feature-container>div.feature:hover {
-  color: var(--hover-color);
-}
-div.feature-container>div.feature.feature-1 {
-  left: 0;
-}
-div.feature-container>div.feature.feature-2 {
-  left: 8.5rem;
-}
-div.feature-container>div.feature.feature-3 {
-  left: 17rem;
-}
-div.feature-container>div.feature>p {
-  display: inline-block;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin: 0;
-  padding: 0;
-}
 div.updates-container {
   display: block;
   position: absolute;
-  left: 4rem;
-  top: 16.5rem;
-  width: calc(100% - 25rem);
+  right: 1rem;
+  top: 0;
+  width: 16rem;
   min-height: 15rem;
   padding: 0 0 1rem 0;
   margin: 0;
@@ -182,7 +216,7 @@ div.updates-container {
 }
 div.updates-container>h1.updates-header {
   text-align: center;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 500;
   margin: 0;
   padding: 1rem 0 0 0;
@@ -211,18 +245,19 @@ div.updates-container>div.update>img {
   background-size: contain;
   background-color: light-dark(var(--dark-main), var(--light-main));
   border-radius: 50%;
+  z-index: 100;
 }
 div.updates-container>div.update>h1.title {
   position: absolute;
   display: inline-block;
   padding: 0;
   margin: 0;
-  top: 1rem;
-  left: 5.5rem;
-  width: calc(100% - 5.5rem);
-  text-align: left;
-  text-indent: 1rem;
-  font-size: 1.25rem;
+  top: 0.75rem;
+  left: 5.25rem;
+  width: calc(100% - 5.25rem);
+  height: 2rem;
+  text-align: center;
+  font-size: 0.75rem;
   font-weight: 600;
   border-bottom: 1px solid light-dark(var(--light-main), var(--dark-main));
 }
@@ -231,11 +266,23 @@ div.updates-container>div.update>p.summary {
   display: inline-block;
   padding: 0;
   margin: 0;
-  top: 3rem;
+  top: 3.25rem;
   left: 6.5rem;
   width: calc(100% - 7.5rem);
   text-align: left;
-  font-size: 0.75rem;
+  font-size: 0.6rem;
+  font-weight: 400;
+}
+div.updates-container>div.update>p.date {
+  position: absolute;
+  display: block;
+  padding: 0;
+  margin: 0;
+  top: 6.5rem;
+  left: 1rem;
+  width: calc(100% - 2rem);
+  font-size: 0.6rem;
+  text-align: left;
   font-weight: 400;
 }
 .toggle-button {
@@ -289,10 +336,13 @@ div.footer {
 }
 
 @media only screen and (max-width: 600px) {
-  div.intro-container {
+  div.intro-container, div.intro-page-container {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    left: 1rem;
     top: 5.5rem;
     width: calc(100% - 2rem);
-    height: 9rem;
   }
   nav.main-nav {
     position: absolute;
@@ -302,24 +352,9 @@ div.footer {
     padding: 0;
     margin: 0;
   }
-  div.feature-container {
-    top: 15.5rem;
-    left: 1rem;
-    width: calc(100% - 2rem);
-  }
-  div.feature-container>div.feature.feature-1 {
-    left: 0;
-  }
-  div.feature-container>div.feature.feature-2 {
-    left: calc(50% - 3.5rem);
-  }
-  div.feature-container>div.feature.feature-3 {
-    left: unset;
-    right: 0;
-  }
   div.updates-container {
     left: 0;
-    top: 22.5rem;
+    top: 16.5rem;
     width: calc(100% - 2rem);
     min-height: 15rem;
     border-radius: 0.5rem;
