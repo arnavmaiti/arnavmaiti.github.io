@@ -1,32 +1,11 @@
 $(document).ready(() => {
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-  const themeLocalStorage = localStorage.themeMode;
-  if (!themeLocalStorage) {
-    localStorage.themeMode = prefersDark ? "dark" : "light";
-  }
-  const darkMode = themeLocalStorage ? themeLocalStorage === "dark" : prefersDark;
-  if (darkMode) {
-    $('html').css('color-scheme', 'dark');
-    $('.toggle-button a.toggle-mode i.fa-solid').removeClass('fa-sun').addClass('fa-moon');
-  } else {
-    $('html').css('color-scheme', 'light');
-    $('.toggle-button a.toggle-mode i.fa-solid').removeClass('fa-moon').addClass('fa-sun');
-  }
-
-  $('.toggle-mode').click((e) => {
-    e.preventDefault();
-    const currentColorScheme = $('html').css('color-scheme');
-    if (currentColorScheme === 'dark') {
-      $('html').css('color-scheme', 'light');
-      $('.toggle-button a.toggle-mode i.fa-solid').removeClass('fa-moon').addClass('fa-sun');
-      localStorage.themeMode = "light";
-    } else {
-      $('html').css('color-scheme', 'dark');
-      $('.toggle-button a.toggle-mode i.fa-solid').removeClass('fa-sun').addClass('fa-moon');
-      localStorage.themeMode = "dark";
-    }
-  });
-  $('.feature.feature-portfolio').click(() => {
-    window.location = "/";
-  });
+  /*$("div.container").mousemove((event) => {
+    const dw = $("div.container").width();
+    const dh = $("div.container").height();
+    const x = (dw - event.pageX) / 50;
+    const y = (dh - event.pageY) / 50;
+    console.log(x + "," + y);
+    $("div.container").css("background-position-x", x + "%");
+    $("div.container").css("background-position-y", y + "%");
+  });*/
 });
