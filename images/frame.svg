@@ -1,0 +1,29 @@
+<svg width="300" height="350" viewBox="0 0 300 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="grainyTexture" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" result="noise"/>
+      <feDiffuseLighting in="noise" lightingColor="#FFFFFF" surfaceScale="1" result="light">
+        <fePointLight x="150" y="175" z="200"/>
+      </feDiffuseLighting>
+      <feComposite in="SourceGraphic" in2="light" operator="arithmetic" k1="1" k2="0" k3="0" k4="0"/>
+    </filter>
+
+    <filter id="tapeWrinkle" x="-50%" y="-50%" width="200%" height="200%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05 0.1" numOctaves="2" result="turb"/>
+      <feDisplacementMap in="SourceGraphic" in2="turb" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+      <feGaussianBlur stdDeviation="0.5" result="blur"/>
+    </filter>
+
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="4" dy="4" stdDeviation="3" flood-color="#000000" flood-opacity="0.75"/>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="300" height="350" fill="#F8F8F8" stroke="#AAAAAA" stroke-width="2" rx="8" ry="8" filter="url(#grainyTexture) url(#shadow)"/>
+
+  <rect x="25" y="25" width="250" height="250" fill="#FFFFFF" stroke="#CCCCCC" stroke-width="3"/>
+
+  <g transform="translate(150, 0)">
+    <rect x="-40" y="-10" width="80" height="25" fill="#CCCCCC" fill-opacity="0.75" rx="3" ry="3" transform="rotate(-5)" filter="url(#tapeWrinkle)"/>
+  </g>
+</svg>

@@ -1,34 +1,221 @@
+/*
+  Font faces
+*/
 @font-face {
   font-family: Diavolo;
   src: url("../fonts/diavolo.regular.otf");
 }
 
+/*
+  Variables
+*/
+:root {
+  /* Primary Font */
+  --primary-font-color: #ffffff;
+  --primary-font-family: "Montserrat", sans-serif;
+  --primary-font-optical-sizing: auto;
+  --primary-font-size: 16px;
+  --primary-font-style: normal;
+  --primary-font-weight: 400;
+
+  /* Other Colors */
+  --anchor-hover-color: #aaaaaa;
+  --nav-color: #000000;
+}
+
+/*
+  Global Styles
+*/
+a {
+  color: var(--primary-font-color);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--anchor-hover-color);
+}
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-font-color);
+  text-transform: uppercase;
+}
+div {
+  padding: 0;
+  margin: 0;
+}
+
+/*
+  Body
+*/
 html, body {
+  position: absolute;
+  /* Font */
+  color: var(--primary-font-color);
+  font-family: var(--primary-font-family);
+  font-optical-sizing: var(--primary-font-optical-sizing);
+  font-size: var(--primary-font-size);
+  font-style: var(--primary-font-style);
+  font-weight: var(--primary-font-weight);
+  /* Dimensions */
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-size: 16px;
-  color: white;
-  font-optical-sizing: auto;
-  font-style: normal;
 }
-
 body {
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAASUlEQVR4AbSOwQkAIAwDSyZQcA5BR+j+KLiQkkd9WfDTwpHSBBqUlLeHql4P8jkBwdqbeLCVeVhjCuGR6hHQkS9/gJVl2PaXHgAAAP//iEIhiwAAAAZJREFUAwDTuSzHdD2EOwAAAABJRU5ErkJggg==) repeat;
+  background: url("../images/wood.png") 25% 25% repeat;
 }
 
-a {
-  text-decoration: none;
-  color: white;
+/* Global Navigations */
+h1.main-header {
+  position: absolute;
+  left: 0;
+  margin: 1rem;
+  padding: 0;
+  font-family: "Diavolo", cursive;
+  font-size: 4rem;
+  font-weight: 400;
+  background-image: url("../images/wood.png");
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.6), 1px 1px 1px rgba(255, 255, 255, 0.25);
 }
-a:hover {
-  color: #aaa;
+div.site-navigation {
+  position: absolute;
+  display: block;
+  right: 1rem;
+  top: 1rem;
+  background: url("../images/todo.svg");
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 21rem 25rem;
+  width: 20rem;
+  height: 30rem;
+  z-index: 100;
+}
+div.site-navigation>h1.nav-header {
+  position: absolute;
+  top: 1.5rem;
+  left: 5rem;
+  padding: 0;
+  margin: 0;
+  color: var(--nav-color);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+div.site-navigation>nav.nav-links {
+  display: block;
+  margin: 4.8rem 0 0 5rem;
+  height: 2rem;
+}
+div.site-navigation>nav.nav-links>a.nav-link {
+  position: relative;
+  display: block;
+  margin: 0 0 1.25rem 0;
+  color: var(--nav-color);
+}
+div.site-navigation>nav.nav-links>a.nav-link.active {
+  font-weight: 600;
+}
+div.site-navigation>nav.nav-links>a.nav-link:hover {
+  font-weight: 600;
+}
+div.site-navigation>nav.nav-links>a.nav-link.active::before {
+  color: var(--nav-color);
+  position: absolute;
+  top: 0;
+  left: -1.9rem;
+  content: "\2713 "; 
+}
+div.social-navigation {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1rem;
+  font-size: 2rem;
+  z-index: 100;
+  height: 15rem;
+  width: 15rem;
+}
+div.social-navigation>nav.nav-links>a.nav-link {
+  position: absolute;
+  display: block;
+  height: 5rem;
+  width: 5rem;
+  text-align: center;
+  background-image: url("../images/sticky.svg");
+  background-repeat: no-repeat;
+  background-size: 5rem 5rem;
+  text-shadow: 1px 1px 1px #bbbbbb;
+  transition: transform 0.5s ease-in-out;
+}
+div.social-navigation>nav.nav-links>a.nav-link.linkedin {
+  top: 1rem;
+  left: 0;
+  color: #0a66c2;
+  transform: rotate(10deg);
+}
+div.social-navigation>nav.nav-links>a.nav-link.linkedin:hover {
+  transform: scale(1.25) rotate(10deg);
+}
+div.social-navigation>nav.nav-links>a.nav-link.github {
+  top: 6rem;
+  left: 4rem;
+  color: #4078c0;
+  margin-left: 4rem;
+  transform: rotate(-10deg);
+}
+div.social-navigation>nav.nav-links>a.nav-link.github:hover {
+  transform: scale(1.25) rotate(-10deg);
+}
+div.social-navigation>nav.nav-links>a.nav-link.instagram {
+  top: -1rem;
+  left: 7rem;
+  color: #e1306c;
+  margin-left: 0rem;
+  transform: rotate(10deg);
+}
+div.social-navigation>nav.nav-links>a.nav-link.instagram:hover {
+  transform: scale(1.25) rotate(10deg);
+}
+div.social-navigation>nav.nav-links>a.nav-link.mail {
+  top: 7rem;
+  left: -2rem;
+  color: #444444;
+  margin-left: 3rem;
+  transform: rotate(10deg);
+}
+div.social-navigation>nav.nav-links>a.nav-link.mail:hover {
+  transform: scale(1.25) rotate(10deg);
+}
+div.social-navigation>nav.nav-links>a.nav-link>i {
+  margin: 0;
+  padding: 1rem 0 0 0;
+  transform: rotate(1deg);
+}
+div.social-navigation>nav.nav-links>a.nav-link>p.sub {
+  margin: 0;
+  padding: 0;
+  font-size: 0.5rem;
+  transform: rotate(1deg);
+}
+div.footer {
+  position: absolute;
+  bottom: 1rem;
+  right: 2.5rem;
+  font-size: 0.75rem;
+  text-align: right;
+  background-image: url("../images/wood.png");
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25), 1px 1px 1px rgba(255, 255, 255, 1);
+}
+div.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  width: 100%;
 }
 
+/* Home Page */
 h1.site-title {
   position: fixed;
   top: calc(50% - 10rem);
@@ -42,119 +229,135 @@ h1.site-title {
   font-style: normal;
   font-size: 16rem;
   font-weight: 400;
-  mix-blend-mode: overlay;
+  background-image: url("../images/wood.png");
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5), 1px 1px 1px rgba(255, 255, 255, 0.25);
+  z-index: -1;
 }
-
-p.main-header {
+div.canvas>div.national-park {
   position: absolute;
-  left: 0;
-  margin: 1rem;
-  padding: 0;
-  font-family: "Diavolo", cursive;
-  font-size: 4rem;
-  font-weight: 400;
-}
-
-nav.site-nav {
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin: 2rem;
-  height: 4rem;
-  vertical-align: middle;
-}
-nav.site-nav>a {
-  display: inline-block;
-  margin: 1rem;
-  text-align: center;
-  text-transform: uppercase;
-  height: 1.5rem;
-}
-nav.site-nav>a.active {
-  border-bottom: 1px solid white;
-}
-nav.social-nav {
-  position: fixed;
-  bottom: 1.25rem;
-  right: 1rem;
-  font-size: 2rem;
-}
-nav.social-nav>a {
-  display: block;
-  margin: 1rem;
-  height: 4rem;
-  width: 4rem;
-  text-align: center;
-}
-nav.social-nav>i {
-  margin: 0;
-  padding: 0;
-}
-nav.social-nav>a>p.sub {
-  margin: 0;
-  padding: 0;
-  font-size: 0.5rem;
-}
-
-div.footer {
-  position: fixed;
-  bottom: 1rem;
-  right: 1.5rem;
-  font-size: 0.5rem;
-  text-align: right;
-}
-
-div.graffitis {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  bottom: 7rem;
-  left: 2rem;
-  width: calc(100% - 4rem);
-}
-div.graffitis>div.graffiti {
   height: 5rem;
   width: 5rem;
-  margin: 0 1rem 0 1rem;
+  transition: transform 0.5s ease-in-out;
 }
-div.graffitis>div.graffiti>p.sub {
-  font-size: 0.75rem;
-  position: relative;
-  display: block;
-  width: 100%;
-  text-align: center;
-  top: 5rem;
-}
-div.graffitis>div.graffiti.cmu-logo {
-  background: url("../images/cmu-mascot-1-color-w.png") no-repeat center;
+div.canvas>div.national-park.yosemite-logo {
+  background: url("../images/yosemite-np.png") no-repeat center;
   background-size: 5rem 5rem;
+  top: 9rem;
+  left: 4rem;
+  transform: rotate(10deg);
+  transition: transform 0.5s ease-in-out;
 }
-div.graffitis>div.graffiti.f5-logo {
-  background: url("../images/F5-logo-F5-white.svg") no-repeat center;
-  background-size: 4rem 4rem;
+div.canvas>div.national-park.yosemite-logo:hover {
+  transform: scale(1.5) rotate(10deg);
 }
-div.graffitis>div.graffiti.oracle-logo {
-  background: url("../images/oracle-logo-white.png") no-repeat center;
-  background-size: 5rem 1rem;
-}
-div.graffitis>div.graffiti.nitrr-logo {
-  background: url("../images/nit-raipur-logo.png") no-repeat center;
+div.canvas>div.national-park.lassen-volcanic-logo {
+  background: url("../images/lassen-volcanic-np.png") no-repeat center;
   background-size: 5rem 5rem;
+  top: 4rem;
+  right: 25rem;
+  transform: rotate(-10deg);
+  transition: transform 0.5s ease-in-out;
 }
-div.graffitis>div.graffiti.accenture-logo {
-  background: url("../images/accenture-logo.svg") no-repeat center;
-  background-size: 3rem 3rem;
+div.canvas>div.national-park.lassen-volcanic-logo:hover {
+  transform: scale(1.5) rotate(-10deg);
+}
+div.canvas>div.national-park.kings-canyon-logo {
+  background: url("../images/kings-canyon-np.png") no-repeat center;
+  background-size: 5rem 5rem;
+  top: 22rem;
+  left: 25rem;
+  transform: rotate(-20deg);
+  transition: transform 0.5s ease-in-out;
+}
+div.canvas>div.national-park.kings-canyon-logo:hover {
+  transform: scale(1.5) rotate(-20deg);
+}
+div.canvas>div.national-park.pinnacles-logo {
+  background: url("../images/pinnacles-np.png") no-repeat center;
+  background-size: 5rem 5rem;
+  bottom: 10rem;
+  left: 18rem;
+  transform: rotate(10deg);
+  transition: transform 0.5s ease-in-out;
+}
+div.canvas>div.national-park.pinnacles-logo:hover {
+  transform: scale(1.5) rotate(10deg);
+}
+div.canvas>div.national-park.crater-lake-logo {
+  background: url("../images/crater-lake-np.png") no-repeat center;
+  background-size: 5rem 5rem;
+  bottom: 10rem;
+  right: 30rem;
+  transform: rotate(-20deg);
+  transition: transform 0.5s ease-in-out;
+}
+div.canvas>div.national-park.crater-lake-logo:hover {
+  transform: scale(1.5) rotate(-20deg);
 }
 
-div.content {
+div.canvas>div.photo-frame {
+  position: absolute;
+  background: url("../images/frame.svg") no-repeat;
+  background-position: center center;
+  background-size: 21rem 15rem;
+  top: calc(50% - 5rem);
+  left: calc(50% - 15rem);
+  height: 20rem;
+  width: 15rem;
+  transform: rotate(-5deg);
+}
+div.canvas>div.photo-frame>img {
+  position: absolute;
+  top: 59px;
+  left: 36px;
+  height: 168px;
+  width: 168px;
+}
+div.canvas>div.sticky {
+  background-image: url("../images/sticky-note.svg");
+  background-repeat: no-repeat;
+  background-size: 15rem 15rem;
+  color: var(--nav-color);
+}
+div.canvas>div.sticky>h1.title {
+  color: var(--nav-color);
+  text-transform: none;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+div.canvas>div.sticky>p {
+  font-size: 0.8rem;
+  margin: 1rem 0 0 0;
+}
+div.canvas>div.about-me {
+  position: absolute;
+  top: calc(50% - 13rem);
+  left: calc(50% - 5rem);
+  height: 15rem;
+  width: 15rem;
+  transform: rotate(15deg);
+  padding: 1.75rem 0 0 1.75rem;
+}
+
+/* 
+  Title - Page Content
+  Description - Used to show page content on a page
+  Style - 
+  <div class="page-content">
+    <h1 class="content-title"></h1>
+  </div>
+*/
+div.page-content {
   position: absolute;
   left: 10rem;
   top: 8rem;
   width: calc(100% - 20rem);
-  min-height: calc(100% - 15rem);
 }
-div.content>h1.title {
+div.page-content>h1.content-title {
   position: absolute;
   top: 0;
   font-size: 3rem;
@@ -166,6 +369,11 @@ div.content>h1.title {
   text-transform: uppercase;
   border-bottom: 1px solid white;
 }
+
+
+
+
+
 div.content>div {
   position: absolute;
 }
@@ -243,7 +451,7 @@ div.content>div.left {
   width: calc(65% - 2.5rem);
   min-height: calc(100% - 23rem);
 }
-div.content>div.left>div.work>div.company {
+div.content>div.left>div.work>div.company, div.content>div.left>div.work>div.education {
   padding: 1rem 0 1rem 0;
 }
 div.content>div.left>div.work>div.company>h2.name {

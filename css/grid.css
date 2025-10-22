@@ -1,0 +1,23 @@
+/* Grid */
+div.grid {
+  display: flex;
+  width: 100%;
+}
+div.grid>div.xs-1 {
+  width: 16.67%;
+}
+div.grid>div.xs-2 {
+  width: 33.33%;
+}
+div.grid>div.xs-3 {
+  width: 50%;
+}
+div.grid>div.xs-4 {
+  width: 66.67%;
+}
+div.grid>div.xs-5 {
+  width: 83.33%;
+}
+div.grid>div.xs-6 {
+  width: 100%;
+}
