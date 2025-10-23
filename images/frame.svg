@@ -1,4 +1,4 @@
-<svg width="300" height="350" viewBox="0 0 300 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="300" height="350" viewBox="0 0 300 360" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <filter id="grainyTexture" x="-10%" y="-10%" width="120%" height="120%">
       <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" result="noise"/>

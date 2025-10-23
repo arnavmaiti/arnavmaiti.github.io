@@ -11,7 +11,7 @@
 */
 :root {
   /* Primary Font */
-  --primary-font-color: #ffffff;
+  --primary-font-color: #000000;
   --primary-font-family: "Montserrat", sans-serif;
   --primary-font-optical-sizing: auto;
   --primary-font-size: 16px;
@@ -20,7 +20,6 @@
 
   /* Other Colors */
   --anchor-hover-color: #aaaaaa;
-  --nav-color: #000000;
 }
 
 /*
@@ -97,7 +96,6 @@ div.site-navigation>h1.nav-header {
   left: 5rem;
   padding: 0;
   margin: 0;
-  color: var(--nav-color);
   font-size: 1.5rem;
   font-weight: 600;
 }
@@ -110,16 +108,11 @@ div.site-navigation>nav.nav-links>a.nav-link {
   position: relative;
   display: block;
   margin: 0 0 1.25rem 0;
-  color: var(--nav-color);
 }
 div.site-navigation>nav.nav-links>a.nav-link.active {
   font-weight: 600;
 }
-div.site-navigation>nav.nav-links>a.nav-link:hover {
-  font-weight: 600;
-}
 div.site-navigation>nav.nav-links>a.nav-link.active::before {
-  color: var(--nav-color);
   position: absolute;
   top: 0;
   left: -1.9rem;
@@ -207,12 +200,30 @@ div.footer {
   color: transparent;
   text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.25), 1px 1px 1px rgba(255, 255, 255, 1);
 }
+
+/* Global Styles */
 div.canvas {
   position: absolute;
+  display: block;
   top: 0;
   left: 0;
   min-height: 100vh;
   width: 100%;
+}
+div.photo-frame {
+  position: absolute;
+  background: url("../images/frame.svg") no-repeat;
+  background-position: center center;
+  background-size: 21rem 15rem;
+  height: 20rem;
+  width: 15rem;
+}
+div.photo-frame>img {
+  position: absolute;
+  top: 58px;
+  left: 38px;
+  height: 164px;
+  width: 164px;
 }
 
 /* Home Page */
@@ -298,31 +309,16 @@ div.canvas>div.national-park.crater-lake-logo:hover {
 }
 
 div.canvas>div.photo-frame {
-  position: absolute;
-  background: url("../images/frame.svg") no-repeat;
-  background-position: center center;
-  background-size: 21rem 15rem;
   top: calc(50% - 5rem);
   left: calc(50% - 15rem);
-  height: 20rem;
-  width: 15rem;
   transform: rotate(-5deg);
-}
-div.canvas>div.photo-frame>img {
-  position: absolute;
-  top: 59px;
-  left: 36px;
-  height: 168px;
-  width: 168px;
 }
 div.canvas>div.sticky {
   background-image: url("../images/sticky-note.svg");
   background-repeat: no-repeat;
   background-size: 15rem 15rem;
-  color: var(--nav-color);
 }
 div.canvas>div.sticky>h1.title {
-  color: var(--nav-color);
   text-transform: none;
   font-size: 1rem;
   font-weight: 500;
@@ -351,110 +347,144 @@ div.canvas>div.about-me {
     <h1 class="content-title"></h1>
   </div>
 */
-div.page-content {
-  position: absolute;
+div.canvas>div.page-content {
+  position: relative;
   left: 10rem;
   top: 8rem;
-  width: calc(100% - 20rem);
+  width: 65rem;
+  height: 76rem;
+  background: url("../images/paper.svg") no-repeat;
+  background-size: 100%;
 }
-div.page-content>h1.content-title {
-  position: absolute;
-  top: 0;
+div.canvas>div.page-content>h1.content-title {
+  position: relative;
   font-size: 3rem;
-  margin: 0;
-  padding: 0 0 1rem 0;
-  width: 100%;
+  margin: 0 0 0 2rem;
+  padding: 3rem 0 0 0;
+  width: calc(100% - 4.75rem);
   text-align: center;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: uppercase;
-  border-bottom: 1px solid white;
+  border-bottom: 3px solid #BBBBBB;
 }
-
-
-
-
-
-div.content>div {
-  position: absolute;
+div.canvas>div.page-content>div.photo-frame {
+  top: 0;
+  right: 2.5rem;
+  transform: rotate(10deg);
 }
-
-div.content>div.contact-card {
-  left: 5rem;
-  top: 5rem;
-  width: calc(100% - 10rem);
-  height: 17.5rem;
+div.canvas>div.page-content>div.contact-card {
+  position: relative;
+  padding: 1rem 0 0 0;
 }
-div.content>div.contact-card>div.profile-image {
-  position: absolute;
-  left: calc(50% - 15rem);
-  top: 3rem;
-  width: 12rem;
-  height: 12rem;
-  margin: 0;
-  padding: 0;
-  background: url("../images/portfolio.jpg") no-repeat center;
-  background-size: cover;
-  border-radius: 50%;
+div.canvas>div.page-content>div.contact-card>div.details {
+  position: relative;
+  padding: 1rem 2rem 2rem 2rem;
+  margin: 0 3rem 0 2rem;
+  border-bottom: 1.5px solid #C0C0C0;
 }
-div.content>div.contact-card>div.details {
-  position: absolute;
-  left: 50%;
-  top: 1rem;
-  width: calc(100% - 30rem);
-}
-div.content>div.contact-card>div.details>h1.name {
-  position: absolute;
-  left: 0;
-  top: 2rem;
+div.canvas>div.page-content>div.contact-card>div.details>h1.name {
+  position: relative;
   display: block;
   width: 100%;
   text-align: left;
   font-size: 2rem;
   text-transform: uppercase;
-  font-weight: 600;
-  margin: 0;
+  font-weight: 500;
   padding: 0;
+  margin: 0;
 }
-div.content>div.contact-card>div.details>table.items {
-  position: absolute;
-  left: 0.5rem;
-  top: 5rem;
-  width: calc(100% - 4rem);
-  font-size: 1rem;
-}
-div.content>div.contact-card>div.details>table.items tr.item {
-  margin: 0 0 2rem 0;
-}
-div.content>div.contact-card>div.details>table.items tr.item>td.icon {
-  width: 2rem;
-}
-
-div.content>div>div>h1.title {
-  margin: 0 0 1.5rem 0;
-  padding: 0 0 0.5rem 0;
-  border-bottom: 1px solid white;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-}
-div.content>div>div {
+div.canvas>div.page-content>div.contact-card>div.details>table.items {
   position: relative;
   left: 0;
   top: 0;
-  padding-bottom: 1rem;
   width: 100%;
+  font-size: 0.9rem;
+  padding: 0 1rem 1rem 0;
+}
+div.canvas>div.page-content>div.contact-card>div.details>table.items tr.item {
+  margin: 0 0 2rem 0;
+}
+div.canvas>div.page-content>div.contact-card>div.details>table.items tr.item>td.icon {
+  width: 2rem;
+}
+div.canvas>div.page-content div.page-details {
+  position: relative;
+}
+div.canvas>div.page-content h1.title {
+  margin: 0;
+  padding: 0 0 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+div.canvas>div.page-content>div.page-details div.grid-data {
+  padding: 1rem 4rem 0 4rem;
+}
+div.canvas>div.page-content>div.page-details div.grid-data>div.company {
+  position: relative;
+}
+div.canvas>div.page-content>div.page-details div.grid-data>div.company>h2.name {
+  padding: 1rem 0 0.25rem 0;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+div.canvas>div.page-content>div.page-details div.grid-data>div.company>div.logo {
+  position: absolute;
+  display: block;
+  right: 0;
+  top: 1rem;
+  height: 5rem;
+  width: 5rem;
+  transform: rotate(-5deg);
+  transition: transform 0.5s ease-in-out;
+}
+div.canvas>div.page-content>div.page-details div.grid-data>div.company>div.logo>img {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 3rem;
+  height: 3rem;
+}
+div.canvas>div.page-content>div.page-details div.grid-data>div.company>div.logo:hover {
+  transform: scale(1.25) rotate(-5deg);
+}
+div.canvas>div.page-content>div.page-details div.grid-data>div.company>table.metadata {
+  padding: 0 0 0.25rem 0.25rem;
+  font-size: 0.75rem;
+}
+div.canvas>div.page-content>div.page-details div.grid-data>div.company>ul.details {
+  padding: 0 0 0.75rem 1.5rem;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.25rem;
+  text-align: justify;
+}
+div.canvas>div.page-content>div.page-details div.grid-data>div.company>ul.details>li {
+  padding: 0.25rem 0 0 0;
+}
+div.canvas>div.page-content>div.page-footer {
+  position: absolute;
+  bottom: 4.5rem;
+  right: 2rem;
+  font-size: 0.75rem;
 }
 
-div.content>div.left {
-  position: absolute;
+
+
+
+div.canvas>div.page-content>div.left {
+  position: relative;
   left: 0;
   top: 23rem;
   width: calc(65% - 2.5rem);
   min-height: calc(100% - 23rem);
 }
-div.content>div.left>div.work>div.company, div.content>div.left>div.work>div.education {
+div.canvas>div.page-content>div.left>div.work>div.company, div.content>div.left>div.work>div.education {
   padding: 1rem 0 1rem 0;
 }
-div.content>div.left>div.work>div.company>h2.name {
+div.canvas>div.page-content>div.left>div.work>div.company>h2.name {
   padding: 0 0 0.25rem 0;
   margin: 0;
   font-size: 1rem;
@@ -463,20 +493,10 @@ div.content>div.left>div.work>div.company>h2.name {
   text-decoration: underline;
   text-underline-offset: 0.5rem;
 }
-div.content>div.left>div.work>div.company>table.metadata {
-  padding-top: 0.5rem;
-  font-size: 0.75rem;
-}
-div.content>div.left>div.work>div.company>ul.details {
-  padding: 0.5rem 0 1.25rem 1.25rem;
-  margin: 0;
-}
-div.content>div.left>div.work>div.company>ul.details>li {
-  padding: 0.25rem 0 0 0;
-}
 
-div.content>div.right {
-  position: absolute;
+
+div.canvas>div.page-content>div.right {
+  position: relative;
   left: calc(65% + 5rem);
   top: 23rem;
   width: calc(35% - 5rem);
