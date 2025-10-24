@@ -447,7 +447,7 @@ div.canvas>div.page-content>div.page-details div.grid-data>div.company>div.logo>
   height: 3rem;
 }
 div.canvas>div.page-content>div.page-details div.grid-data>div.company>div.logo:hover {
-  transform: scale(1.25);
+  transform: scale(1.5);
 }
 div.canvas>div.page-content>div.page-details div.grid-data>div.company>table.metadata {
   padding: 0 0 0.25rem 0.25rem;
@@ -463,41 +463,46 @@ div.canvas>div.page-content>div.page-details div.grid-data>div.company>ul.detail
 div.canvas>div.page-content>div.page-details div.grid-data>div.company>ul.details>li {
   padding: 0.25rem 0 0 0;
 }
+div.canvas>div.page-content>div.page-details div.grid-data>div.company>ul.details>li>a {
+  text-decoration: underline;
+}
+div.canvas>div.page-content>div.page-details div.grid-data>div.college {
+  position: relative;
+}
+div.canvas>div.page-content>div.page-details div.grid-data>div.college>h2.name {
+  padding: 1rem 0 0.25rem 0;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+div.canvas>div.page-content>div.page-details div.grid-data>div.college>div.logo {
+  position: absolute;
+  display: block;
+  right: 0;
+  top: 0rem;
+  height: 5rem;
+  width: 5rem;
+  transition: transform 0.5s ease-in-out;
+}
+div.canvas>div.page-content>div.page-details div.grid-data>div.college>div.logo>img {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 3rem;
+  height: 3rem;
+}
+div.canvas>div.page-content>div.page-details div.grid-data>div.college>div.logo:hover {
+  transform: scale(1.5);
+}
+div.canvas>div.page-content>div.page-details div.grid-data>div.college>table.metadata {
+  padding: 0 0 0.25rem 0.25rem;
+  font-size: 0.75rem;
+}
 div.canvas>div.page-content>div.page-footer {
   position: absolute;
   bottom: 4.5rem;
   right: 2rem;
   font-size: 0.75rem;
-}
-
-
-
-
-div.canvas>div.page-content>div.left {
-  position: relative;
-  left: 0;
-  top: 23rem;
-  width: calc(65% - 2.5rem);
-  min-height: calc(100% - 23rem);
-}
-div.canvas>div.page-content>div.left>div.work>div.company, div.content>div.left>div.work>div.education {
-  padding: 1rem 0 1rem 0;
-}
-div.canvas>div.page-content>div.left>div.work>div.company>h2.name {
-  padding: 0 0 0.25rem 0;
-  margin: 0;
-  font-size: 1rem;
-  text-transform: uppercase;
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 0.5rem;
-}
-
-
-div.canvas>div.page-content>div.right {
-  position: relative;
-  left: calc(65% + 5rem);
-  top: 23rem;
-  width: calc(35% - 5rem);
-  min-height: calc(100% - 23rem);
 }
