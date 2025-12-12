@@ -442,9 +442,14 @@ div.canvas>div.page-content>div.page-details div.grid-data>div.company>div.logo 
 div.canvas>div.page-content>div.page-details div.grid-data>div.company>div.logo>img {
   position: absolute;
   top: 1rem;
-  left: 1rem;
+  left: 0;
   width: 3rem;
   height: 3rem;
+}
+div.canvas>div.page-content>div.page-details div.grid-data>div.company.zscaler>div.logo>img {
+  left: -1rem;
+  width: 5rem;
+  height: 5rem;
 }
 div.canvas>div.page-content>div.page-details div.grid-data>div.company>div.logo:hover {
   transform: scale(1.5);
@@ -489,7 +494,7 @@ div.canvas>div.page-content>div.page-details div.grid-data>div.college>div.logo 
 div.canvas>div.page-content>div.page-details div.grid-data>div.college>div.logo>img {
   position: absolute;
   top: 1rem;
-  left: 1rem;
+  left: 0;
   width: 3rem;
   height: 3rem;
 }
