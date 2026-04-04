@@ -146,7 +146,6 @@ button {
 section {
     display: block;
     position: absolute;
-    height: 101%; /* Slight overlap to prevent sub-pixel gaps between sections */
     width: 100%;
     left: 0;
     z-index: 5;
@@ -155,6 +154,7 @@ section {
 section.hero {
     top: 0;
     z-index: 0;
+    height: 100vh;
     background-color: var(--current-sky);
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, transparent 60%, rgba(255, 255, 255, 0) 100%);
     overflow: hidden;
@@ -168,7 +168,7 @@ section.portfolio {
     justify-content: center;
     min-height: 120vh; /* Increased to ensure content fills more than a single screen */
     height: auto;
-    padding-top: 8rem;
+    padding-top: 12rem;
     padding-bottom: 15rem; /* Large bottom buffer so the next section's divider stays hidden */
     position: absolute;
     width: 100%;
@@ -188,7 +188,7 @@ section.portfolio {
 }
 
 section.blogs {
-    top: 100vh;
+    top: 99vh;
     background-color: var(--forest-3);
     color: var(--paper-light);
 }
@@ -219,7 +219,7 @@ body {
 
 .section-title {
     position: absolute;
-    top: 1rem;
+    top: 6rem;
     left: 50%;
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -878,7 +878,7 @@ body {
     #logo-sign { bottom: 50%; }
 
     section.blogs, section.portfolio {
-        padding-top: 5rem;
+        padding-top: 9rem;
         padding-bottom: 10rem;
         min-height: 200vh; /* Fill the gap between section start points on mobile */
     }
@@ -889,7 +889,7 @@ body {
 
     .section-title {
         font-size: 1.8rem;
-        top: 0.5rem;
+        top: 4.5rem;
     }
 
     .blog-grid, .experience-timeline {
