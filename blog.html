@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="./css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Outfit:wght@300;500&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+    <script src="./js/data.js"></script>
+    <script src="./js/script.js"></script>
+    <title>Arnav Maiti | Blog Post</title>
+  </head>
+  <body class="sub-page">
+    <div id="loader"><div class="loading-text">Loading</div></div>
+    <nav>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="blogs.html" class="active-link">Blogs</a>
+            <a href="portfolio.html">Portfolio</a>
+        </div>
+    </nav>
+    <main>
+        <section id="home" class="hero hero-compact" style="height: 40vh;">
+          <div id="celestial"></div>
+          <svg id="logo-sign" viewBox="0 0 400 120" style="bottom: 30%;">
+              <text x="200" y="75" text-anchor="middle" class="logo-desktop">Blog Post</text>
+              <text x="200" y="45" text-anchor="middle" class="logo-mobile">Blog</text>
+              <text x="200" y="105" text-anchor="middle" class="logo-mobile">Post</text>
+          </svg>
+          <svg class="mountain mtn-front" viewBox="0 0 800 400" preserveAspectRatio="none">
+            <path d="M 0 400 L 0 220 C 23 193 53 203 70 180 C 87 157 112 112 142 104 C 162 100 197 188 220 160 C 246 130 297 162 316 145 C 347 124 404 69 424 68 C 451 68 487 169 533 174 C 576 178 607 115 630 115 C 655 115 667 189 740 190 C 764 189 780 162 800 160 L 800 400 Z" 
+            fill="var(--mountain-2)" />
+          </svg>
+          <svg class="forest forest-front" viewBox="0 0 800 450" preserveAspectRatio="none">
+            <path d="M -50 450 L -49 395 C 66 400 103 330 168 351 C 227 369 238 379 328 383 C 384 385 380 408 439 398 C 484 390 504 383 571 394 C 641 405 656 396.6667 716 378 C 766 364 800 400 850 400 L 850 450 Z" 
+            fill="var(--forest-3)" />
+          </svg>
+        </section>
+        <section class="blogs">
+            <div class="section-content" style="max-width: 800px;">
+                <article id="blog-content">
+                    <span class="blog-date">Date Placeholder</span>
+                    <h1 class="section-title" style="position: relative; top: 0; left: 0; transform: none; opacity: 1; text-align: left; margin-bottom: 2rem;">Blog Title Placeholder</h1>
+                    <div class="blog-body" style="font-family: 'Outfit'; line-height: 1.8; font-size: 1.1rem;">
+                        <p>This is a placeholder for your blog content. You can use this template to render full blog posts dynamically or statically.</p>
+                    </div>
+                </article>
+                <div style="margin-top: 4rem;">
+                    <a href="blogs.html" class="item-link">← Back to Blogs</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="time-controls">
+      <div id="time-display">12:00</div>
+      <input type="range" id="time-slider" min="0" max="23.99" step="0.01" value="12">
+      <button id="reset-time-btn">Real Time</button>
+    </div>
+    <div id="drawer-overlay"></div>
+    <div id="drawer">
+        <button id="close-drawer">✕</button>
+        <div id="drawer-image"></div>
+        <div class="drawer-header"><h2 id="drawer-title"></h2><p id="drawer-subtitle"></p></div>
+        <div id="drawer-body"></div>
+    </div>
+    <footer>
+        <svg class="footer-divider" viewBox="0 0 800 150" preserveAspectRatio="none">
+            <path d="M -50 150 L -50 30 C 16 12 54 38 97 46 C 166 55 162 39 195 44 C 274 59 250 64 326 45 C 389 29 433 56 487 39 C 549 20 615 69 661 48 C 702 30 742 22 770 24 C 801 28 836 43 850 42 L 850 150 Z" />
+        </svg>
+        <div class="footer-content">
+            <p>Contact: <a href="mailto:arnavmaiti@gmail.com">arnavmaiti@gmail.com</a></p>
+            <p>&copy; <span id="current-year"></span> Arnav Maiti. All rights reserved.</p>
+        </div>
+    </footer>
+  </body>
+</html>

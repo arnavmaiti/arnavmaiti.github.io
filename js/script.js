@@ -194,6 +194,9 @@ $(document).ready(function() {
     }
 
     function updateScene(options = {}) {
+        const celestial = $('#celestial');
+        if (!celestial.length) return;
+
         const now = new Date();
         const { customHour, customPhase } = options;
         // Use customHour if provided (for animation), otherwise use real time
@@ -210,14 +213,14 @@ $(document).ready(function() {
             shadowOp = 0.5; 
             textColor = 'var(--ink-dark)'; 
             nightActive = false;
-            $('#celestial').css('clip-path', 'none');
+            celestial.css('clip-path', 'none');
         } else if (time >= 7 && time < 19) { // Day
             sky = 'var(--morning-sky)'; 
             body = 'var(--sun)'; 
             shadowOp = 0.2; 
             textColor = 'var(--ink-dark)'; 
             nightActive = false;
-            $('#celestial').css('clip-path', 'none');
+            celestial.css('clip-path', 'none');
         } else { // Night
             sky = 'var(--night-sky)'; 
             body = 'var(--moon)'; 
@@ -228,8 +231,10 @@ $(document).ready(function() {
             const phase = getMoonPhase(customPhase);
             
             // Calculate SVG Path for the Moon Phase (Transparency)
-            const r = 35; // Radius (70px / 2)
-            const cx = 35;
+            const size = celestial.width();
+            const r = size / 2;
+            const cx = r;
+            
             const isWaxing = phase <= 0.5;
             // Calculate the semi-minor axis for the terminator ellipse
             const rx = r * Math.abs(Math.cos(phase * 2 * Math.PI));
@@ -239,19 +244,19 @@ $(document).ready(function() {
                 // Waxing: light on the right. Terminator moves from R to L.
                 const sweep = (phase > 0.25) ? 1 : 0;
                 // Start at top, draw right semi-circle down.
-                d = `M ${cx} 0 A ${r} ${r} 0 0 1 ${cx} 70`;
+                d = `M ${cx} 0 A ${r} ${r} 0 0 1 ${cx} ${size}`;
                 // Draw terminator ellipse from bottom back to top.
                 d += ` A ${rx} ${r} 0 0 ${sweep} ${cx} 0`;
             } else {
                 // Waning: light on the left. Terminator moves from L to R.
                 const sweep = (phase > 0.75) ? 1 : 0; // Crescent bulges left (ccw), gibbous bulges right (cw)
                 // Start at top, draw left semi-circle down.
-                d = `M ${cx} 0 A ${r} ${r} 0 0 0 ${cx} 70`;
+                d = `M ${cx} 0 A ${r} ${r} 0 0 0 ${cx} ${size}`;
                 // Draw terminator ellipse from bottom back to top.
                 d += ` A ${rx} ${r} 0 0 ${sweep} ${cx} 0`;
             }
             
-            $('#celestial').css('clip-path', `path('${d}Z')`);
+            celestial.css('clip-path', `path('${d}Z')`);
         }
 
         const suffix = nightActive ? 'night' : 'day';
@@ -272,7 +277,7 @@ $(document).ready(function() {
 
         $('.star').css('display', nightActive ? 'block' : 'none');
         if (nightActive) {
-            $('#celestial').css('background', `
+            celestial.css('background', `
                 radial-gradient(circle at 20% 25%, var(--moon-spot) 8%, transparent 8.5%),
                 radial-gradient(circle at 60% 20%, var(--moon-spot) 12%, transparent 12.5%),
                 radial-gradient(circle at 45% 60%, var(--moon-spot) 10%, transparent 10.5%),
@@ -281,14 +286,14 @@ $(document).ready(function() {
             `);
         } else {
             // For sun, just set the background color and clear any gradients
-            $('#celestial').css('background', body);
+            celestial.css('background', body);
         }
 
         // Arc Movement
         const progress = time / 24;
         let xPos = 5 + (progress * 90);
         const yPos = 15 - (Math.sin(progress * Math.PI) * 15);
-        $('#celestial').css({ left: xPos + '%', top: yPos + '%' });
+        celestial.css({ left: xPos + '%', top: yPos + '%' });
 
         // Shadow Tracking
         const shadowX = (50 - xPos) / 2; // Simple relative offset
@@ -408,6 +413,7 @@ $(document).ready(function() {
         if (text.includes('Blogs')) target = '#blogs';
         else if (text.includes('Portfolio')) target = '#portfolio';
         else if (text.includes('Home')) target = '#home';
+        else if (text.includes('Featured')) target = '#featured';
         
         if (target) {
             document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
@@ -437,7 +443,7 @@ $(document).ready(function() {
             });
 
             // Forest (Foreground) moves faster
-            $('.forest').each(function(index) {
+        $('.forest:not(.forest-front)').each(function(index) {
                 const speed = 0.2 - (index * 0.1);
                 $(this).css('transform', `translateY(${scrolled * speed}px)`);
             });
@@ -456,16 +462,28 @@ $(document).ready(function() {
 
         // Update Scroll Indicator
         const $indicator = $('#scroll-indicator');
-        const blogsTop = $('section.blogs').offset().top;
-        const portfolioTop = $('section.portfolio').offset().top;
+        const $homeSection = $('section#home'); // Always present
+        const $featuredSection = $('section#featured'); // Present on index.html
+        const $blogsSection = $('section#blogs'); // Present on blogs.html
+        const $portfolioSection = $('section#portfolio'); // Present on portfolio.html
 
-        if (scrolled < blogsTop - 100) {
-            $indicator.find('.indicator-text').text('Blogs');
-            $indicator.find('.indicator-icon').text('↓');
-        } else if (scrolled < portfolioTop - 100) {
-            $indicator.find('.indicator-text').text('Portfolio');
+        let firstContentSection = null;
+
+        // Determine the *first* scrollable section after hero on the current page
+        if ($featuredSection.length) { // This is for index.html
+            firstContentSection = $featuredSection;
+        } else if ($blogsSection.length) { // This is for blogs.html
+            firstContentSection = $blogsSection;
+        } else if ($portfolioSection.length) { // This is for portfolio.html
+            firstContentSection = $portfolioSection;
+        }
+
+        if (firstContentSection && scrolled < firstContentSection.offset().top - 100) {
+            // We are above the first content section, so show indicator to scroll down to it
+            $indicator.find('.indicator-text').text(firstContentSection.attr('id').charAt(0).toUpperCase() + firstContentSection.attr('id').slice(1));
             $indicator.find('.indicator-icon').text('↓');
         } else {
+            // We are at or past the first content section, so show indicator to scroll up to Home
             $indicator.find('.indicator-text').text('Home');
             $indicator.find('.indicator-icon').text('↑');
         }
@@ -497,11 +515,8 @@ $(document).ready(function() {
 
     $(document).on('click', '.blog-card, .timeline-card', function() {
         const card = $(this);
+        if (!drawer.length) return;
         
-        // Trigger Pop Animation
-        card.addClass('card-pop');
-        setTimeout(() => card.removeClass('card-pop'), 300);
-
         const title = card.find('h3').text();
         const subInfo = card.find('.blog-date, .timeline-date').text() + ' | ' + (card.find('.role').text() || 'Blog Post');
         const content = card.find('.item-detail-content').html();
@@ -537,6 +552,7 @@ $(document).ready(function() {
     });
 
     function closeDrawer() {
+        if (!drawer.length) return;
         drawer.removeClass('active');
         overlay.removeClass('active');
         $('body').removeClass('no-scroll');
@@ -573,34 +589,96 @@ $(document).ready(function() {
         });
     }
 
-    function renderTimeline(data, selector) {
+    function parseDate(dateStr) {
+        if (!dateStr || dateStr === 'Present') return new Date();
+        const parts = dateStr.split('-');
+        return new Date(parts[2], parts[1] - 1, parts[0]);
+    }
+
+    function renderUnifiedTimeline(workData, eduData, selector) {
         const container = $(selector);
         container.empty();
         
-        data.forEach(item => {
+        const combined = [
+            ...workData.map(item => ({ ...item, type: 'work' })),
+            ...eduData.map(item => ({ ...item, type: 'education' }))
+        ];
+
+        combined.sort((a, b) => {
+            return parseDate(b.start_date) - parseDate(a.start_date);
+        });
+
+        const startYear = 2007;
+        const currentYear = new Date().getFullYear();
+        const startDate = new Date(startYear, 0, 1).getTime();
+        const endDate = new Date(currentYear, 11, 31).getTime();
+
+        // 1. Boundary Top
+        container.append(`<div class="boundary-year top">${currentYear}</div>`);
+
+        // 2. Year Dots (Ticks along the line)
+        const dotsContainer = $('<div class="timeline-dots-container"></div>');
+        for (let y = currentYear; y >= startYear; y--) {
+            dotsContainer.append(`
+                <div class="year-dot">
+                    <span class="year-tooltip">${y}</span>
+                </div>
+            `);
+        }
+        container.append(dotsContainer);
+
+        // 3. Timeline Items
+        combined.forEach(item => {
+            const sideClass = item.type === 'education' ? 'left-side' : 'right-side';
+            const startYearOnly = item.start_date.split('-')[2];
+            const endDisplay = item.end_date === 'Present' ? 'Present' : item.end_date.split('-')[2];
+            const dateDisplay = `${startYearOnly} - ${endDisplay}`;
+            
+            // Calculate vertical position based on start_date
+            const itemTime = parseDate(item.start_date).getTime();
+            const topPercentage = ((endDate - itemTime) / (endDate - startDate)) * 100;
+
             const card = $(`
-                <div class="timeline-card" data-image="${item.image}">
-                    <div class="card-image" style="background-image: url('${item.image}')"></div>
-                    <span class="timeline-date">${item.date}</span>
-                    <h3>${item.title}</h3>
-                    <p class="role">${item.role}</p>
-                    <div class="item-detail-content">${item.detail}</div>
-                    <a href="#" class="item-link">Read More →</a>
+                <div class="timeline-item ${sideClass}" style="top: ${topPercentage}%">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-card" data-image="${item.image}">
+                        <span class="timeline-date">${dateDisplay}</span>
+                        <h3>${item.title}</h3>
+                        <div class="timeline-card-hover-content">
+                            <div class="card-image" style="background-image: url('${item.image}')"></div>
+                            <div class="timeline-info">
+                                <p class="role">${item.role}</p>
+                                <span class="click-hint">Click for details →</span>
+                            </div>
+                        </div>
+                        <div class="item-detail-content">${item.detail}</div>
+                    </div>
                 </div>
             `);
             container.append(card);
         });
+
+        // 4. Boundary Bottom
+        container.append(`<div class="boundary-year bottom">${startYear}</div>`);
     }
 
     // Load data from data.js
     if (typeof portfolioData !== 'undefined') {
-        if (portfolioData.blogs) renderBlogs(portfolioData.blogs, '#blog-grid');
-        renderTimeline(portfolioData.work_experience, '#work-timeline');
-        renderTimeline(portfolioData.education, '#education-timeline');
+        if (portfolioData.blogs) {
+            if ($('#featured-grid').length) renderBlogs(portfolioData.blogs.slice(-4), '#featured-grid');
+            if ($('#blog-grid').length) renderBlogs(portfolioData.blogs, '#blog-grid');
+        }
+        
+        if ($('#unified-timeline').length && portfolioData.work_experience && portfolioData.education) {
+            renderUnifiedTimeline(portfolioData.work_experience, portfolioData.education, '#unified-timeline');
+        }
     }
 
     // Observe sections
     document.querySelectorAll('section').forEach(section => {
         observer.observe(section);
     });
+
+    // Set current year in footer
+    $('#current-year').text(new Date().getFullYear());
 });
