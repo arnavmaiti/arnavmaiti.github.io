@@ -508,12 +508,7 @@ $(document).ready(function() {
     const drawer = $('#drawer');
     const overlay = $('#drawer-overlay');
 
-    // Prevent "Read More" links from jumping to top of page using event delegation
-    $(document).on('click', '.item-link', function(e) {
-        e.preventDefault();
-    });
-
-    $(document).on('click', '.blog-card, .timeline-card', function() {
+    $(document).on('click', '.timeline-card', function() {
         const card = $(this);
         if (!drawer.length) return;
         
@@ -569,6 +564,68 @@ $(document).ready(function() {
     $('#close-drawer, #drawer-overlay').on('click', closeDrawer);
     $(document).on('keydown', (e) => { if(e.key === 'Escape') closeDrawer(); });
 
+    // --- Lightbox Logic ---
+    $(document).on('click', '.blog-post-content img, .polaroid img', function() {
+        const src = $(this).attr('src');
+        let $overlay = $('#lightbox-overlay');
+        
+        if (!$overlay.length) {
+            $overlay = $('<div id="lightbox-overlay" class="lightbox-overlay"><button class="lightbox-close">✕</button><img class="lightbox-image" src="" alt="Enlarged view"></div>');
+            $('body').append($overlay);
+        }
+        
+        $overlay.find('.lightbox-image').attr('src', src);
+        $overlay.addClass('active');
+        $('body').addClass('no-scroll');
+    });
+
+    $(document).on('click', '#lightbox-overlay', function() {
+        $(this).removeClass('active');
+        $('body').removeClass('no-scroll');
+    });
+
+    // --- Dynamic Reading Time Calculation ---
+    function calculateReadingTime() {
+        const blogContent = $('.blog-post-content');
+        const readingTimeDisplay = $('.reading-time');
+        if (blogContent.length && readingTimeDisplay.length) {
+            const words = blogContent.text().trim().split(/\s+/).length;
+            const visuals = blogContent.find('img, iframe').length;
+            // Standard: 200 words per minute + 10 seconds per image/map
+            const minutes = Math.ceil((words / 200) + (visuals * 10 / 60));
+            const target = readingTimeDisplay.find('.time-text').length ? readingTimeDisplay.find('.time-text') : readingTimeDisplay;
+            target.text(`${minutes} min read`);
+        }
+    }
+    calculateReadingTime();
+
+    // --- Passport Stamp Generation ---
+    function generateCurvedStamps() {
+        $('.stamp-wrapper').each(function() {
+            const $w = $(this);
+            const topText = $w.data('top');
+            const bottomText = $w.data('bottom');
+            const centerText = $w.data('center') || "VISITED";
+            const dateText = $w.data('date');
+            
+            const container = $w.find('.curved-text');
+            const combinedText = `${topText} ★ ${bottomText} ★`.toUpperCase();
+            const chars = combinedText.split('');
+            const degreeStep = 360 / chars.length;
+
+            chars.forEach((char, i) => {
+                const span = $('<span>').text(char);
+                const angle = i * degreeStep;
+                span.css('transform', `translate(-50%, -50%) rotate(${angle}deg) translateY(-47px)`);
+                container.append(span);
+            });
+
+            $w.find('.center-text').text(centerText);
+            $w.find('.date-box').text(dateText);
+        });
+    }
+    generateCurvedStamps();
+
     // --- Dynamic Content Loading (About Me) ---
     function renderBlogs(data, selector) {
         const container = $(selector);
@@ -576,14 +633,12 @@ $(document).ready(function() {
         
         data.forEach(item => {
             const card = $(`
-                <div class="blog-card" data-image="${item.image}">
+                <a href="${item.link}" class="blog-card">
                     <div class="card-image" style="background-image: url('${item.image}')"></div>
-                    <span class="blog-date">${item.date}</span>
                     <h3>${item.title}</h3>
                     <p>${item.summary}</p>
-                    <div class="item-detail-content">${item.detail}</div>
-                    <a href="#" class="item-link">Read More →</a>
-                </div>
+                    <span class="item-link">Read More →</span>
+                </a>
             `);
             container.append(card);
         });

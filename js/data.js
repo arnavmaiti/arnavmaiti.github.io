@@ -1,5 +1,12 @@
 const portfolioData = {
-  "blogs": [],
+  "blogs": [
+    {
+      "title": "Memorial day road trip: Gateway Arch, Mammoth Cave & the Smokies",
+      "summary": "A whirlwind Memorial Day adventure exploring the architectural marvels of St. Louis, the underground wonders of Kentucky, the misty peaks of the Smokies, and the world-class St. Louis Zoo.",
+      "image": "images/2026-05-22.jpg",
+      "link": "blogs/2026-05-22.html"
+    }
+  ],
   "work_experience": [
     {
       "title": "Zscaler",

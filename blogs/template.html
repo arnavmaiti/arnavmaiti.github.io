@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="[SEO_KEYWORDS_HERE]" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Outfit:wght@300;500&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js" crossorigin="anonymous"></script>
+    <script src="../js/data.js"></script>
+    <script src="../js/script.js"></script>
+    <title>[POST_TITLE] | Arnav Maiti</title>
+  </head>
+  <body class="sub-page">
+    <div id="loader">
+        <div class="loading-text">Loading</div>
+    </div>
+    <nav>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../blogs.html" class="active-link">Blogs</a>
+            <a href="../portfolio.html">Portfolio</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Compact Hero: Matches Blogs listing page -->
+        <section id="home" class="hero hero-compact" style="height: 40vh;">
+          <div id="celestial"></div>
+          <svg id="logo-sign" viewBox="0 0 400 120" style="bottom: 30%;">
+              <text x="200" y="75" text-anchor="middle" class="logo-desktop">Blogs</text>
+              <text x="200" y="45" text-anchor="middle" class="logo-mobile">Blogs</text>
+          </svg>
+          <svg class="mountain mtn-front" viewBox="0 0 800 400" preserveAspectRatio="none">
+            <path d="M 0 400 L 0 220 C 23 193 53 203 70 180 C 87 157 112 112 142 104 C 162 100 197 188 220 160 C 246 130 297 162 316 145 C 347 124 404 69 424 68 C 451 68 487 169 533 174 C 576 178 607 115 630 115 C 655 115 667 189 740 190 C 764 189 780 162 800 160 L 800 400 Z" fill="var(--mountain-2)" />
+          </svg>
+          <svg class="forest forest-front" viewBox="0 0 800 450" preserveAspectRatio="none">
+            <path d="M -50 450 L -49 395 C 66 400 103 330 168 351 C 227 369 238 379 328 383 C 384 385 380 408 439 398 C 484 390 504 383 571 394 C 641 405 656 396.6667 716 378 C 766 364 800 400 850 400 L 850 450 Z" fill="var(--forest-3)" />
+          </svg>
+        </section>
+
+        <!-- Main Blog Content Section -->
+        <section id="blogs" class="blogs blog-post-container">
+            <a href="../blogs.html" class="back-link top-left">← Back to Blogs</a>
+            <h2 class="section-title">[Post title in sentence case]</h2>
+            <div class="blog-header-meta">
+                <div class="date-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <span class="blog-date">[DATE]</span>
+                </div>
+                <span class="reading-time">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <span class="time-text">[X] min read</span>
+                </span>
+            </div>
+
+            <div class="blog-tags">
+                <span class="tag-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                    [Tag]
+                </span>
+            </div>
+
+            <article class="blog-post-content">
+                <p>Start your story here...</p>
+                
+                <div class="blog-gallery">
+                    <div class="polaroid">
+                        <img src="../images/your-hero-image.jpg" alt="Description">
+                        <div class="polaroid-caption">Caption here</div>
+                    </div>
+                </div>
+
+                <h2>Subheading</h2>
+                <p>Add more details about your trip or project.</p>
+            </article>
+        </section>
+    </main>
+
+    <!-- Dynamic Time Controls -->
+    <div id="time-controls">
+      <div id="time-display">12:00</div>
+      <input type="range" id="time-slider" min="0" max="23.99" step="0.01" value="12">
+      <button id="reset-time-btn">Real Time</button>
+    </div>
+
+    <div id="scroll-indicator">
+        <span class="indicator-text">Home</span>
+        <span class="indicator-icon">↑</span>
+    </div>
+
+    <footer>
+        <svg class="footer-divider" viewBox="0 0 800 150" preserveAspectRatio="none">
+            <path d="M -50 150 L -50 30 C 16 12 54 38 97 46 C 166 55 162 39 195 44 C 274 59 250 64 326 45 C 389 29 433 56 487 39 C 549 20 615 69 661 48 C 702 30 742 22 770 24 C 801 28 836 43 850 42 L 850 150 Z" />
+        </svg>
+        <div class="footer-content">
+            <p>Contact: <a href="mailto:arnavmaiti@gmail.com">arnavmaiti@gmail.com</a></p>
+            <p>&copy; <span id="current-year"></span> Arnav Maiti. All rights reserved.</p>
+        </div>
+    </footer>
+  </body>
+</html>
