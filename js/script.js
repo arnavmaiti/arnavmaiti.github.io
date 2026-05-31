@@ -491,7 +491,7 @@ $(document).ready(function() {
 
     // Reveal Animations on Scroll
     const observerOptions = {
-        threshold: 0.1 // Trigger when 10% of the section is visible
+        threshold: 0 // Trigger as soon as any part of the section is visible
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -733,6 +733,11 @@ $(document).ready(function() {
     document.querySelectorAll('section').forEach(section => {
         observer.observe(section);
     });
+
+    // Force immediate reveal for sub-page titles to ensure they load on mobile
+    if ($('body').hasClass('sub-page')) {
+        $('.blog-post-container .section-title').addClass('reveal');
+    }
 
     // Set current year in footer
     $('#current-year').text(new Date().getFullYear());
