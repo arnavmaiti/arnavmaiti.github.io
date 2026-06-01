@@ -565,7 +565,7 @@ $(document).ready(function() {
     $(document).on('keydown', (e) => { if(e.key === 'Escape') closeDrawer(); });
 
     // --- Lightbox Logic ---
-    $(document).on('click', '.blog-post-content img, .polaroid img', function() {
+    $(document).on('click', '.blog-post-content img, .polaroid img, .souvenir-thumb', function() {
         const src = $(this).attr('src');
         let $overlay = $('#lightbox-overlay');
         
@@ -641,6 +641,70 @@ $(document).ready(function() {
                 </a>
             `);
             container.append(card);
+        });
+    }
+
+    function renderSouvenirs(data, selector) {
+        const container = $(selector);
+        if (!container.length) return;
+        container.empty();
+        
+        Object.keys(data).forEach(categoryKey => {
+            const categoryTitle = categoryKey.replace(/_/g, ' ').toUpperCase();
+            const categorySection = $(`
+                <div class="souvenir-category">
+                    <h2>${categoryTitle}</h2>
+                    <ul class="park-list"></ul>
+                </div>
+            `);
+            const parkList = categorySection.find('.park-list');
+            
+            data[categoryKey].forEach(parkGroup => {
+                const parkItem = $(`
+                    <li class="park-item">
+                        <h3>${parkGroup.name}</h3>
+                        <ul class="token-list"></ul>
+                    </li>
+                `);
+                const tokenList = parkItem.find('.token-list');
+                
+                parkGroup.items.forEach(item => {
+                    const isCollected = item.collected === true;
+                    const statusClass = isCollected ? 'collected' : 'missing';
+                    const checkMark = isCollected ? '●' : '○';
+                    const dateText = isCollected ? (item.date || 'Date Unknown') : 'Needed';
+
+                    const imageList = Array.isArray(item.images) ? item.images : (item.image ? [item.image] : []);
+                    let imgThumbnails = '';
+                    imageList.forEach(img => {
+                        imgThumbnails += `<img src="${img}" class="souvenir-thumb" alt="${item.name}">`;
+                    });
+
+                    const tokenItem = $(`
+                        <li class="token-item ${statusClass}">
+                            <div class="token-row">
+                                <div>
+                                    <span class="status-badge">${checkMark}</span>
+                                    <span>${item.name}</span>
+                                </div>
+                                <span class="token-date">${dateText}</span>
+                            </div>
+                            ${imgThumbnails ? `<div class="token-images">${imgThumbnails}</div>` : ''}
+                        </li>
+                    `);
+                    tokenList.append(tokenItem);
+                });
+                parkList.append(parkItem);
+            });
+
+            // Add Accordion Click Handler
+            categorySection.on('click', '.park-item h3', function() {
+                const $parent = $(this).closest('.park-item');
+                $parent.toggleClass('active');
+                $parent.find('.token-list').slideToggle(300);
+            });
+
+            container.append(categorySection);
         });
     }
 
@@ -726,6 +790,10 @@ $(document).ready(function() {
         
         if ($('#unified-timeline').length && portfolioData.work_experience && portfolioData.education) {
             renderUnifiedTimeline(portfolioData.work_experience, portfolioData.education, '#unified-timeline');
+        }
+
+        if ($('#souvenir-container').length && portfolioData.souvenirs) {
+            renderSouvenirs(portfolioData.souvenirs, '#souvenir-container');
         }
     }
 

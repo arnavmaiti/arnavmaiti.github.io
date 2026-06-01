@@ -59,4 +59,68 @@ const portfolioData = {
       "detail": "<p><strong>Raipur, India</strong></p><p>Bachelor of Technology in Information Technology.</p><p>Grade: 7.93/10.0</p>"
     }
   ]
+  ,
+  "souvenirs": {
+    "collector_tokens": [
+      {
+        "name": "Lassen Volcanic National Park",
+        "items": [
+          { "name": "Juniper Lake", "collected": true, "date": "", "images": ["images/tokens/269_front.jpg", "images/tokens/269_back.jpg"] },
+          { "name": "Lassen Peak", "collected": true, "date": "", "images": ["images/tokens/270_front.jpg", "images/tokens/270_back.jpg"] },
+          { "name": "Butte Lake", "collected": true, "date": "", "images": ["images/tokens/268_front.jpg", "images/tokens/268_back.jpg"] },
+          { "name": "Warner Valley", "collected": true, "date": "", "images": ["images/tokens/271_front.jpg", "images/tokens/271_back.jpg"] },
+          { "name": "Manzanita Lake", "collected": true, "date": "", "images": ["images/tokens/448_front.jpg", "images/tokens/448_back.jpg"] },
+          { "name": "Bumpass Hell", "collected": false, "date": "", "images": ["images/tokens/449_front.jpg", "images/tokens/449_back.jpg"] }
+        ]
+      },
+      {
+        "name": "Pinnacles National Park",
+        "items": [
+          { "name": "Pinnacles National Park", "collected": true, "date": "", "images": ["images/tokens/pinn-1_front.webp", "images/tokens/pinn-1_back.webp"] }
+        ]
+      },
+      {
+        "name": "Sequoia & Kings Canyon National Parks",
+        "items": [
+          { "name": "Mount Whitney", "collected": true, "date": "", "images": ["images/tokens/127_front.jpg", "images/tokens/127_back.jpg"] },
+          { "name": "General Sherman Tree", "collected": true, "date": "", "images": ["images/tokens/126_front.jpg", "images/tokens/126_back.jpg"] },
+          { "name": "Kings Canyon", "collected": true, "date": "", "images": ["images/tokens/125_front.jpg", "images/tokens/125_back.jpg"] },
+          { "name": "General Grant Tree", "collected": true, "date": "", "images": ["images/tokens/124_front.jpg", "images/tokens/124_back.jpg"] }
+        ]
+      },
+      {
+        "name": "Gateway Arch National Park",
+        "items": [
+          { "name": "Gateway Arch", "collected": true, "date": "May 23, 2026", "images": ["images/tokens/670_front.jpg", "images/tokens/670_back.jpg"] },
+          { "name": "Old Courthouse", "collected": true, "date": "May 23, 2026", "images": ["images/tokens/179_front.jpg", "images/tokens/179_back.jpg"] }
+        ]
+      },
+      {
+        "name": "Mammoth Cave National Park",
+        "items": [
+          { "name": "Stalactite - Mammoth Cave", "collected": true, "date": "May 24, 2026", "images": ["images/tokens/246_front.jpg", "images/tokens/246_back.jpg"] }
+        ]
+      },
+      {
+        "name": "Great Smoky Mountains National Park",
+        "items": [
+          { "name": "Smokey Bear", "collected": true, "date": "May 25, 2026", "images": ["images/tokens/704_front.jpg", "images/tokens/704_back.jpg"] },
+          { "name": "Mt. Le Conte", "collected": true, "date": "May 25, 2026", "images": ["images/tokens/291_front.jpg", "images/tokens/291_back.jpg"] },
+          { "name": "Great Smoky Mountains", "collected": true, "date": "May 25, 2026", "images": ["images/tokens/705_front.jpg", "images/tokens/705_back.jpg"] },
+          { "name": "Mingus Mill", "collected": true, "date": "May 25, 2026", "images": ["images/tokens/smoky_1_front.jpg", "images/tokens/smoky_1_back.jpg"] },
+          { "name": "Kuwohi", "collected": true, "date": "May 25, 2026" },
+          { "name": "Cades Cove", "collected": true, "date": "May 25, 2026", "images": ["images/tokens/284_front.jpg", "images/tokens/284_back.jpg"] }
+        ]
+      }
+    ],
+    "collector_coins": [
+      {
+        "name": "Walkabout Collection",
+        "items": [
+          { "name": "Lassen Volcanic, California", "collected": true, "date": "", "images": ["images/tokens/LassenVolcanicBack.jpg", "images/tokens/LassenVolcanicFront.jpg"] },
+          { "name": "Mammoth Cave, Kentucky", "collected": true, "date": "May 24, 2026", "images": ["images/tokens/MammothCaveBack.jpg", "images/tokens/MammothCaveFront.jpg"] }
+        ]
+      }
+    ]
+  }
 };
