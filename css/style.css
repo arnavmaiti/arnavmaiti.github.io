@@ -1661,3 +1661,114 @@ section.featured {
     transform: scale(1.05);
     border-color: var(--morning-sky);
 }
+
+/* FOOTER STYLES */
+footer {
+    background-color: var(--forest-2);
+    color: var(--paper-light);
+    text-align: center;
+    padding: 4rem 0 2rem;
+    position: relative;
+    z-index: 10;
+    margin-top: auto;
+    transition: background-color 3s ease;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-divider {
+    position: absolute;
+    top: -149px;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    z-index: -1;
+    filter: drop-shadow(var(--shadow-x) -5px 3px rgba(0,0,0,0.5));
+}
+
+.footer-divider path {
+    fill: var(--forest-2);
+    transition: fill 3s ease;
+}
+
+footer a {
+    color: var(--paper-light);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+footer a:hover {
+    border-color: var(--paper-light);
+    color: var(--morning-sky);
+}
+
+.secret-link {
+    display: inline-block;
+    opacity: 0.08;
+    margin-left: 8px;
+    vertical-align: middle;
+    color: inherit;
+    text-decoration: none;
+    border: none !important;
+    transition: opacity 0.5s ease;
+    color: var(--paper-light);
+}
+
+.secret-link:hover {
+    opacity: 0.5;
+    color: var(--paper-light);
+}
+
+/* MOBILE OPTIMIZATIONS */
+@media (max-width: 768px) {
+    .blog-grid, .unified-timeline {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .blog-gallery {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .polaroid {
+        max-width: 320px;
+        width: 100%;
+    }
+
+    .blog-post-content,
+    .blog-header-meta,
+    .blog-tags,
+    .back-link.top-left,
+    .blog-post-container .section-title {
+        max-width: 100%;
+        padding: 0 1.5rem;
+    }
+
+    .blog-post-content {
+        padding: 2rem 1.5rem;
+    }
+
+    #logo-sign text {
+        font-size: 3.5rem;
+    }
+
+    .hero-compact #logo-sign text {
+        font-size: 2.5rem;
+    }
+
+    .mountain, .forest {
+        transform: scale(1.5);
+        transform-origin: bottom;
+    }
+
+    footer {
+        padding-bottom: 7rem !important; /* Lift content above mobile fixed controls */
+    }
+}
