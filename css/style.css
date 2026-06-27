@@ -62,6 +62,8 @@ html {
     --is-night: 0; /* Logic flag for shooting stars */
     --logo-glow: 0 0 0 transparent;
     --hamburger-glow: 0 0 0 transparent;
+    --windmill-color: #ffffff;
+    --cabin-color: var(--balloon-basket);
 }
 
 /* BLOG POST CONTENT STYLES */
@@ -1118,6 +1120,80 @@ section.featured {
 .forest g {
     transition: fill 3s ease;
 }
+
+/* WINDMILL AND SILHOUETTE ADDITIONS */
+.windmill-sails {
+    animation: rotate-windmill 16s linear infinite;
+    transform-origin: 642px 265px;
+}
+
+@keyframes rotate-windmill {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.cabin-window,
+.camper-light {
+    opacity: var(--burner-glow);
+    transition: opacity 3s ease;
+}
+
+.silhouette-cabin polygon,
+.silhouette-cabin rect,
+.silhouette-cabin path,
+.silhouette-windmill polygon,
+.silhouette-windmill rect,
+.silhouette-windmill path,
+.silhouette-windmill line,
+.silhouette-windmill circle {
+    transition: fill 3s ease, stroke 3s ease;
+}
+
+/* Chimney Smoke — all 4 puffs share the same 6s cycle.
+   Each holds opacity:0 until its cue, then rises and fades.
+   All reach opacity:0 at 100%, so they vanish together every cycle. */
+
+@keyframes smoke-rise-1 {
+    0%    { transform: translateY(0)     translateX(0)    scale(1);    opacity: 0.7; }
+    100%  { transform: translateY(-26px) translateX(7px) scale(1.5);  opacity: 0; }
+}
+@keyframes smoke-rise-2 {
+    0%    { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+    25%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+    26%   { opacity: 0.65; }
+    100%  { transform: translateY(-20px) translateX(5px) scale(1.35); opacity: 0; }
+}
+@keyframes smoke-rise-3 {
+    0%    { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+    50%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+    51%   { opacity: 0.6; }
+    100%  { transform: translateY(-13px) translateX(3px) scale(1.2);  opacity: 0; }
+}
+@keyframes smoke-rise-4 {
+    0%    { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+    75%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+    76%   { opacity: 0.55; }
+    100%  { transform: translateY(-6px)  translateX(2px) scale(1.1);  opacity: 0; }
+}
+
+.chimney-smoke {
+    opacity: 0;
+    transition: opacity 3s ease;
+}
+.chimney-smoke {
+    opacity: var(--burner-glow);
+}
+
+.smoke-puff {
+    transform-box: fill-box;
+    transform-origin: center bottom;
+}
+
+.smoke-puff-1 { animation: smoke-rise-1 6s ease-in-out infinite; }
+.smoke-puff-2 { animation: smoke-rise-2 6s ease-in-out infinite; }
+.smoke-puff-3 { animation: smoke-rise-3 6s ease-in-out infinite; }
+.smoke-puff-4 { animation: smoke-rise-4 6s ease-in-out infinite; }
+
 
 .mtn-front g path {
     /* Gives each individual tree a tiny bit of depth */

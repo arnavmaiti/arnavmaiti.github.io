@@ -1,144 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="./css/style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Outfit:wght@300;500&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-4.0.0.min.js" integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
-    <script src="./js/data.js"></script>
-    <script src="./js/script.js"></script>
-    <title>Arnav Maiti | Home</title>
-  </head>
-  <body>
-    <div id="loader">
-        <div class="loading-text">Loading</div>
-    </div>
-    <nav>
-        <div class="nav-links">
-            <a href="#home" class="active-link">Home</a>
-            <a href="blogs.html">Blogs</a>
-            <a href="portfolio.html">Portfolio</a>
-        </div>
-    </nav>
 
-    <main>
-        <section id="home" class="hero">
-          <div id="celestial"></div>
-          <svg class="balloon-hero" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 150 200">
-            <g id="balloon-strings" stroke="var(--balloon-string)">
-              <!-- Strings -->
-              <line x1="66" x2="50" y1="140" y2="90" />
-              <line x1="84" x2="100" y1="140" y2="90" />
-              <line x1="70" x2="60" y1="140" y2="90" />
-              <line x1="80" x2="90" y1="140" y2="90" />
-              <line x1="75" x2="75" y1="140" y2="90" />
-            </g>
-            <g id="balloon-body">
-              <!-- Balloon -->
-              <path d="M 110,25 C 110,25 120,25 125,45 C 125,45 135,70 100,100 L 100,100 95,100 Z" fill="var(--accent-dark-clay)" />
-              <path d="M 40,25 C 40,25 30,25 25,45 C 25,45 15,70 50,100 L 50,100 55,100  Z" fill="var(--accent-dark-clay)" />
-              <path d="M 105,15 C 105,15 115,15 120,35 C 120,35 130,60 95,100 L 95,100 80,100 Z" fill="var(--accent-clay)" />
-              <path class="night-glow" d="M 105,15 C 105,15 115,15 120,35 C 120,35 130,60 95,100 L 95,100 80,100 Z" fill="var(--accent-clay)" style="opacity: var(--burner-glow); mix-blend-mode: screen;" />
-              <path d="M 45,15 C 45,15 35,15 30,35 C 30,35 20,60 55,100 L 55,100 70,100 Z" fill="var(--accent-clay)" />
-              <path class="night-glow" d="M 45,15 C 45,15 35,15 30,35 C 30,35 20,60 55,100 L 55,100 70,100 Z" fill="var(--accent-clay)" style="opacity: var(--burner-glow); mix-blend-mode: screen;" />
-              <path d="M 90,5 C 90,5 100,5 105,15 C 105,15 125,60 85,100 L 85,100 80,100 Z" fill="var(--accent-dark-clay)" />
-              <path d="M 60,5 C 60,5 50,5 45,15 C 45,15 25,60 65,100 L 65,100 70,100 Z" fill="var(--accent-dark-clay)" />
-              <path d="M 75,0 C 75,0 85,0 90,5 C 90,5 115,40 80,100 L 80,100 70,100 L 70,100 75,0 C 75,0 65,0 60,5 C 60,5 35,40 70,100 Z" fill="var(--accent-clay)" />
-              <path class="night-glow" d="M 75,0 C 75,0 85,0 90,5 C 90,5 115,40 80,100 L 80,100 70,100 L 70,100 75,0 C 75,0 65,0 60,5 C 60,5 35,40 70,100 Z" fill="var(--accent-clay)" style="opacity: var(--burner-glow); mix-blend-mode: screen;" />
-              <!-- Balloon base -->
-              <path d="M 50,100 C 50,100 75,90 100,100 L 100,100 94,110 C 94,110 75,105 56,110 L 56,110 50,100 Z" fill="var(--accent-dark-clay)" />
-            </g>
-            <g id="balloon-basket">
-              <!-- Base -->
-              <path d="M 65,140 L 65,140 85,140 L 85,140 83,155 L 83,155 68,155 L 68,155 65,140 Z" fill="var(--balloon-basket)" />
-              <path d="M 65,140 L 65,140 85,140 L 85,140 83,143 L 83,143 67,143 L 67,143 65,140 Z" fill="var(--balloon-string)" />
-            </g>
-          </svg>
-          <svg class="mountain mtn-back" viewBox="0 0 800 450" preserveAspectRatio="none">
-            <path d="M -50 450 C -33 340 -36 275 8 224 C 30 201 57 214 74 193 C 94 169 113 202 134 203 c 55 -1 72 -87 98 -108 C 249 84 258 114 317 107 C 359 99 372 43 413 26 C 436 17 463 109 513 111 C 557 112 562 179 610 180 C 662 180 692 97 716 107 C 758 128 794 206 850 210 c 43 2 30 164 61 240 Z" 
-            fill="var(--mountain-1)"
-            /> 
-          </svg>
-          <svg class="mountain mtn-front" viewBox="0 0 800 400" preserveAspectRatio="none">
-            <path d="M 0 400 L 0 220 C 23 193 53 203 70 180 C 87 157 112 112 142 104 C 162 100 197 188 220 160 C 246 130 297 162 316 145 C 347 124 404 69 424 68 C 451 68 487 169 533 174 C 576 178 607 115 630 115 C 655 115 667 189 740 190 C 764 189 780 162 800 160 L 800 400 Z" 
-            fill="var(--mountain-2)" />
-          </svg>
-          <svg class="forest forest-back" viewBox="0 0 800 450" preserveAspectRatio="none">
-            <g id="back-trees" fill="var(--forest-1)"></g>
-          </svg>
-          <svg class="forest forest-middle" viewBox="0 0 800 450" preserveAspectRatio="none">
-              <path d="M -50 450 L -50 280 C 16 262 54 288 97 296 C 166 305 162 289 195 294 C 274 309 250 314 326 295 C 389 279 433 306 487 289 C 549 270 615 319 661 298 C 702 280 742 272 770 274 C 801 278 836 293 850 292 L 850 450 Z" 
-              fill="var(--forest-2)" />
-          </svg>
-          <svg class="forest forest-front" viewBox="0 0 800 450" preserveAspectRatio="none">
-            <path d="M -50 450 L -49 395 C 66 400 103 330 168 351 C 227 369 238 379 328 383 C 384 385 380 408 439 398 C 484 390 504 383 571 394 C 641 405 656 396.6667 716 378 C 766 364 800 400 850 400 L 850 450 Z" 
-            fill="var(--forest-3)" />
-          </svg>
-          <svg id="logo-sign" viewBox="0 0 400 120">
-              <text x="200" y="75" text-anchor="middle" class="logo-desktop">Arnav Maiti</text>
-              <text x="200" y="45" text-anchor="middle" class="logo-mobile">Arnav</text>
-              <text x="200" y="105" text-anchor="middle" class="logo-mobile">Maiti</text>
-          </svg>
-        </section>
-        <section id="featured" class="featured">
-            <div class="section-content">
-                <h2 class="section-title">Featured</h2>
-                <div id="featured-grid" class="blog-grid"></div>
-            </div>
-        </section>
-    </main>
-    <div id="time-controls">
-      <div id="time-display">12:00</div>
-      <input type="range" id="time-slider" min="0" max="23.99" step="0.01" value="12">
-      <button id="reset-time-btn">Real Time</button>
-    </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="./css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Outfit:wght@300;500&display=swap"
+    rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"
+    integrity="sha256-OaVG6prZf4v69dPg6PhVattBXkcOWQB62pdZ3ORyrao=" crossorigin="anonymous"></script>
+  <script src="./js/data.js"></script>
+  <script src="./js/script.js"></script>
+  <title>Arnav Maiti | Home</title>
+</head>
 
-    <div id="social-links">
-        <a href="https://github.com/ArnavMaiti" target="_blank" aria-label="GitHub">
-            <span class="social-tooltip">GitHub</span>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+<body>
+  <div id="loader">
+    <div class="loading-text">Loading</div>
+  </div>
+  <nav>
+    <div class="nav-links">
+      <a href="#home" class="active-link">Home</a>
+      <a href="blogs.html">Blogs</a>
+      <a href="portfolio.html">Portfolio</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="home" class="hero">
+      <div id="celestial"></div>
+      <svg class="balloon-hero" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 150 200">
+        <g id="balloon-strings" stroke="var(--balloon-string)">
+          <!-- Strings -->
+          <line x1="66" x2="50" y1="140" y2="90" />
+          <line x1="84" x2="100" y1="140" y2="90" />
+          <line x1="70" x2="60" y1="140" y2="90" />
+          <line x1="80" x2="90" y1="140" y2="90" />
+          <line x1="75" x2="75" y1="140" y2="90" />
+        </g>
+        <g id="balloon-body">
+          <!-- Balloon -->
+          <path d="M 110,25 C 110,25 120,25 125,45 C 125,45 135,70 100,100 L 100,100 95,100 Z"
+            fill="var(--accent-dark-clay)" />
+          <path d="M 40,25 C 40,25 30,25 25,45 C 25,45 15,70 50,100 L 50,100 55,100  Z"
+            fill="var(--accent-dark-clay)" />
+          <path d="M 105,15 C 105,15 115,15 120,35 C 120,35 130,60 95,100 L 95,100 80,100 Z"
+            fill="var(--accent-clay)" />
+          <path class="night-glow" d="M 105,15 C 105,15 115,15 120,35 C 120,35 130,60 95,100 L 95,100 80,100 Z"
+            fill="var(--accent-clay)" style="opacity: var(--burner-glow); mix-blend-mode: screen;" />
+          <path d="M 45,15 C 45,15 35,15 30,35 C 30,35 20,60 55,100 L 55,100 70,100 Z" fill="var(--accent-clay)" />
+          <path class="night-glow" d="M 45,15 C 45,15 35,15 30,35 C 30,35 20,60 55,100 L 55,100 70,100 Z"
+            fill="var(--accent-clay)" style="opacity: var(--burner-glow); mix-blend-mode: screen;" />
+          <path d="M 90,5 C 90,5 100,5 105,15 C 105,15 125,60 85,100 L 85,100 80,100 Z"
+            fill="var(--accent-dark-clay)" />
+          <path d="M 60,5 C 60,5 50,5 45,15 C 45,15 25,60 65,100 L 65,100 70,100 Z" fill="var(--accent-dark-clay)" />
+          <path
+            d="M 75,0 C 75,0 85,0 90,5 C 90,5 115,40 80,100 L 80,100 70,100 L 70,100 75,0 C 75,0 65,0 60,5 C 60,5 35,40 70,100 Z"
+            fill="var(--accent-clay)" />
+          <path class="night-glow"
+            d="M 75,0 C 75,0 85,0 90,5 C 90,5 115,40 80,100 L 80,100 70,100 L 70,100 75,0 C 75,0 65,0 60,5 C 60,5 35,40 70,100 Z"
+            fill="var(--accent-clay)" style="opacity: var(--burner-glow); mix-blend-mode: screen;" />
+          <!-- Balloon base -->
+          <path d="M 50,100 C 50,100 75,90 100,100 L 100,100 94,110 C 94,110 75,105 56,110 L 56,110 50,100 Z"
+            fill="var(--accent-dark-clay)" />
+        </g>
+        <g id="balloon-basket">
+          <!-- Base -->
+          <path d="M 65,140 L 65,140 85,140 L 85,140 83,155 L 83,155 68,155 L 68,155 65,140 Z"
+            fill="var(--balloon-basket)" />
+          <path d="M 65,140 L 65,140 85,140 L 85,140 83,143 L 83,143 67,143 L 67,143 65,140 Z"
+            fill="var(--balloon-string)" />
+        </g>
+      </svg>
+      <svg class="mountain mtn-back" viewBox="0 0 800 450" preserveAspectRatio="none">
+        <path
+          d="M -50 450 C -33 340 -36 275 8 224 C 30 201 57 214 74 193 C 94 169 113 202 134 203 c 55 -1 72 -87 98 -108 C 249 84 258 114 317 107 C 359 99 372 43 413 26 C 436 17 463 109 513 111 C 557 112 562 179 610 180 C 662 180 692 97 716 107 C 758 128 794 206 850 210 c 43 2 30 164 61 240 Z"
+          fill="var(--mountain-1)" />
+      </svg>
+      <svg class="mountain mtn-front" viewBox="0 0 800 400" preserveAspectRatio="none">
+        <path
+          d="M 0 400 L 0 220 C 23 193 53 203 70 180 C 87 157 112 112 142 104 C 162 100 197 188 220 160 C 246 130 297 162 316 145 C 347 124 404 69 424 68 C 451 68 487 169 533 174 C 576 178 607 115 630 115 C 655 115 667 189 740 190 C 764 189 780 162 800 160 L 800 400 Z"
+          fill="var(--mountain-2)" />
+      </svg>
+      <svg class="forest forest-back" viewBox="0 0 800 450" preserveAspectRatio="none">
+        <g id="back-trees" fill="var(--forest-1)"></g>
+        <!-- Spinning Windmill -->
+        <g class="silhouette-windmill">
+          <polygon points="635,305 640,265 644,265 649,305" fill="var(--windmill-color)" />
+          <path d="M 639.5,265 C 639.5,260 644.5,260 644.5,265 Z" fill="var(--windmill-color)" />
+          <g class="windmill-sails">
+            <line x1="642" y1="265" x2="642" y2="240" stroke="var(--windmill-color)" stroke-width="2" />
+            <line x1="642" y1="265" x2="642" y2="290" stroke="var(--windmill-color)" stroke-width="2" />
+            <line x1="642" y1="265" x2="617" y2="265" stroke="var(--windmill-color)" stroke-width="2" />
+            <line x1="642" y1="265" x2="667" y2="265" stroke="var(--windmill-color)" stroke-width="2" />
+            <polygon points="642,240 645,240 645,255 642,255" fill="var(--windmill-color)" />
+            <polygon points="642,290 639,290 639,275 642,275" fill="var(--windmill-color)" />
+            <polygon points="617,265 617,262 632,262 632,265" fill="var(--windmill-color)" />
+            <polygon points="667,265 667,268 652,268 652,265" fill="var(--windmill-color)" />
+          </g>
+          <circle cx="642" cy="265" r="2.5" fill="var(--forest-1)" />
+        </g>
+      </svg>
+      <svg class="forest forest-middle" viewBox="0 0 800 450" preserveAspectRatio="none">
+        <defs>
+          <clipPath id="roof-clip">
+            <polygon points="210,295 230,270 250,295" />
+          </clipPath>
+          <pattern id="shingles" x="210" y="270" width="8" height="10" patternUnits="userSpaceOnUse">
+            <!-- Row 1 shading -->
+            <rect x="0" y="0" width="4" height="5" fill="rgba(0,0,0,0.07)" />
+            <!-- Row 2 shading (staggered) -->
+            <rect x="4" y="5" width="4" height="5" fill="rgba(0,0,0,0.07)" />
+            <!-- Horizontal dividers -->
+            <line x1="0" y1="5" x2="8" y2="5" stroke="rgba(0,0,0,0.22)" stroke-width="0.45" />
+            <!-- Row 1 vertical divider -->
+            <line x1="4" y1="0" x2="4" y2="5" stroke="rgba(0,0,0,0.22)" stroke-width="0.45" />
+            <!-- Row 2 vertical dividers (staggered) -->
+            <line x1="2" y1="5" x2="2" y2="10" stroke="rgba(0,0,0,0.22)" stroke-width="0.45" />
+            <line x1="6" y1="5" x2="6" y2="10" stroke="rgba(0,0,0,0.22)" stroke-width="0.45" />
+          </pattern>
+        </defs>
+        <path
+          d="M -50 450 L -50 280 C 16 262 54 288 97 296 C 166 305 162 289 195 294 C 274 309 250 314 326 295 C 389 279 433 306 487 289 C 549 270 615 319 661 298 C 702 280 742 272 770 274 C 801 278 836 293 850 292 L 850 450 Z"
+          fill="var(--forest-2)" />
+        <!-- Cozy Cabin -->
+        <g class="silhouette-cabin">
+          <rect x="240" y="275" width="5" height="14" fill="var(--cabin-door-color)" />
+          <polygon points="210,295 230,270 250,295" fill="var(--cabin-door-color)" />
+          <!-- Tiled roof overlay -->
+          <polygon points="210,295 230,270 250,295" fill="url(#shingles)" clip-path="url(#roof-clip)" />
+          <rect x="215" y="295" width="30" height="20" fill="var(--cabin-color)" />
+          <rect x="227" y="303" width="6" height="12" fill="var(--cabin-door-color)" />
+          <circle cx="232" cy="309" r="0.9" fill="var(--cabin-color)" />
+          <rect class="cabin-window" x="218" y="299" width="5" height="5" fill="var(--sun)"
+            style="mix-blend-mode: screen;" />
+          <rect class="cabin-window" x="237" y="299" width="5" height="5" fill="var(--sun)"
+            style="mix-blend-mode: screen;" />
+          <!-- Chimney smoke (visible at night) -->
+          <g class="chimney-smoke">
+            <circle class="smoke-puff smoke-puff-1" cx="242" cy="272" r="2.5" fill="rgba(190,190,200,0.7)" />
+            <circle class="smoke-puff smoke-puff-2" cx="242" cy="272" r="5" fill="rgba(190,190,200,0.6)" />
+            <circle class="smoke-puff smoke-puff-3" cx="242" cy="272" r="3.5" fill="rgba(190,190,200,0.5)" />
+            <circle class="smoke-puff smoke-puff-4" cx="242" cy="272" r="7" fill="rgba(190,190,200,0.4)" />
+          </g>
+          <!-- Bush on the left side -->
+          <g fill="var(--forest-1)" style="transition: fill 3s ease;">
+            <circle cx="207" cy="311" r="5" />
+            <circle cx="213" cy="309" r="7" />
+            <circle cx="219" cy="312" r="4.5" />
+          </g>
+        </g>
+      </svg>
+      <svg class="forest forest-front" viewBox="0 0 800 450" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="headlight-beam" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="var(--sun)" stop-opacity="0.8" />
+            <stop offset="100%" stop-color="var(--sun)" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <path
+          d="M -50 450 L -49 395 C 66 400 103 330 168 351 C 227 369 238 379 328 383 C 384 385 380 408 439 398 C 484 390 504 383 571 394 C 641 405 656 396.6667 716 378 C 766 364 800 400 850 400 L 850 450 Z"
+          fill="var(--forest-3)" />
+
+
+        <!-- Retro Camper Van -->
+        <g class="silhouette-camper">
+          <path d="M 510,390 L 510,373 C 510,369 514,365 520,365 L 542,365 C 548,365 550,369 550,375 L 550,390 Z"
+            fill="var(--accent-dark-clay)" />
+          <circle cx="518" cy="390" r="4.5" fill="var(--forest-1)" />
+          <circle cx="542" cy="390" r="4.5" fill="var(--forest-1)" />
+          <circle cx="518" cy="390" r="2" fill="var(--forest-3)" />
+          <circle cx="542" cy="390" r="2" fill="var(--forest-3)" />
+          <rect x="513" y="368" width="10" height="6" rx="1" fill="var(--forest-3)" />
+          <rect x="526" y="368" width="10" height="6" rx="1" fill="var(--forest-3)" />
+          <path d="M 539,368 L 547,368 C 548.5,368 549,369 549,372 L 545,372 Z" fill="var(--forest-3)" />
+          <rect x="510" y="377" width="40" height="2" fill="var(--forest-3)" />
+          <!-- Headlight and beam glow -->
+          <circle class="camper-light" cx="550.5" cy="377.5" r="2.5" fill="var(--sun)"
+            style="mix-blend-mode: screen;" />
+          <polygon class="camper-light" points="550,377.5 590,368 590,392" fill="url(#headlight-beam)"
+            style="mix-blend-mode: screen; pointer-events: none;" />
+        </g>
+      </svg>
+      <svg id="logo-sign" viewBox="0 0 400 120">
+        <text x="200" y="75" text-anchor="middle" class="logo-desktop">Arnav Maiti</text>
+        <text x="200" y="45" text-anchor="middle" class="logo-mobile">Arnav</text>
+        <text x="200" y="105" text-anchor="middle" class="logo-mobile">Maiti</text>
+      </svg>
+    </section>
+    <section id="featured" class="featured">
+      <div class="section-content">
+        <h2 class="section-title">Featured</h2>
+        <div id="featured-grid" class="blog-grid"></div>
+      </div>
+    </section>
+  </main>
+  <div id="time-controls">
+    <div id="time-display">12:00</div>
+    <input type="range" id="time-slider" min="0" max="23.99" step="0.01" value="12">
+    <button id="reset-time-btn">Real Time</button>
+  </div>
+
+  <div id="social-links">
+    <a href="https://github.com/ArnavMaiti" target="_blank" aria-label="GitHub">
+      <span class="social-tooltip">GitHub</span>
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+      </svg>
+    </a>
+    <a href="https://linkedin.com/in/arnavmaiti" target="_blank" aria-label="LinkedIn">
+      <span class="social-tooltip">LinkedIn</span>
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+      </svg>
+    </a>
+    <a href="https://instagram.com/arnavmaiti" target="_blank" aria-label="Instagram">
+      <span class="social-tooltip">Instagram</span>
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+      </svg>
+    </a>
+  </div>
+
+  <div id="scroll-indicator">
+    <span class="indicator-text">Featured</span>
+    <span class="indicator-icon">↓</span>
+  </div>
+
+  <!-- Side Drawer for Item Details -->
+  <div id="drawer-overlay"></div>
+  <div id="drawer">
+    <button id="close-drawer">✕</button>
+    <div id="drawer-image"></div>
+    <div class="drawer-header">
+      <h2 id="drawer-title"></h2>
+      <p id="drawer-subtitle"></p>
+    </div>
+    <div id="drawer-body"></div>
+  </div>
+  <footer>
+    <svg class="footer-divider" viewBox="0 0 800 150" preserveAspectRatio="none">
+      <path
+        d="M -50 150 L -50 30 C 16 12 54 38 97 46 C 166 55 162 39 195 44 C 274 59 250 64 326 45 C 389 29 433 56 487 39 C 549 20 615 69 661 48 C 702 30 742 22 770 24 C 801 28 836 43 850 42 L 850 150 Z" />
+    </svg>
+    <div class="footer-content">
+      <p>Contact: <a href="mailto:arnavmaiti@gmail.com">arnavmaiti@gmail.com</a></p>
+      <p>
+        &copy; <span id="current-year"></span> Arnav Maiti. All rights reserved.
+        <a href="souvenirs.html" class="secret-link" title="Collections">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="display: block;">
+            <path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2Z" />
+          </svg>
         </a>
-        <a href="https://linkedin.com/in/arnavmaiti" target="_blank" aria-label="LinkedIn">
-            <span class="social-tooltip">LinkedIn</span>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-        </a>
-        <a href="https://instagram.com/arnavmaiti" target="_blank" aria-label="Instagram">
-            <span class="social-tooltip">Instagram</span>
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
+      </p>
     </div>
+  </footer>
+</body>
 
-    <div id="scroll-indicator">
-        <span class="indicator-text">Featured</span>
-        <span class="indicator-icon">↓</span>
-    </div>
-
-    <!-- Side Drawer for Item Details -->
-    <div id="drawer-overlay"></div>
-    <div id="drawer">
-        <button id="close-drawer">✕</button>
-        <div id="drawer-image"></div>
-        <div class="drawer-header">
-            <h2 id="drawer-title"></h2>
-            <p id="drawer-subtitle"></p>
-        </div>
-        <div id="drawer-body"></div>
-    </div>
-    <footer>
-        <svg class="footer-divider" viewBox="0 0 800 150" preserveAspectRatio="none">
-            <path d="M -50 150 L -50 30 C 16 12 54 38 97 46 C 166 55 162 39 195 44 C 274 59 250 64 326 45 C 389 29 433 56 487 39 C 549 20 615 69 661 48 C 702 30 742 22 770 24 C 801 28 836 43 850 42 L 850 150 Z" />
-        </svg>
-        <div class="footer-content">
-            <p>Contact: <a href="mailto:arnavmaiti@gmail.com">arnavmaiti@gmail.com</a></p>
-            <p>
-                &copy; <span id="current-year"></span> Arnav Maiti. All rights reserved.
-                <a href="souvenirs.html" class="secret-link" title="Collections">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="display: block;"><path d="M12 2L4.5 20.29L5.21 21L12 18L18.79 21L19.5 20.29L12 2Z"/></svg>
-                </a>
-            </p>
-        </div>
-    </footer>
-  </body>
 </html>

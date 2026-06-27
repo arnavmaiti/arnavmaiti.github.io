@@ -10,10 +10,10 @@ function debounce(func, wait) {
     };
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
     let nightActive = false;
     let isRealTimePaused = false; // true means manual control/paused real-time, false means real-time active
-    
+
     const sky = $('.hero');
     const nav = $('nav');
     const navLinks = $('.nav-links');
@@ -47,7 +47,7 @@ $(document).ready(function() {
         const bgStarCount = isMobile ? 30 : 60;
         const mwStarCount = isMobile ? 80 : 200;
 
-        for(let i = 0; i < bgStarCount; i++) {
+        for (let i = 0; i < bgStarCount; i++) {
             let size = Math.random() * 3;
             let star = $('<div class="star"></div>').css({
                 top: Math.random() * 100 + '%',
@@ -59,10 +59,10 @@ $(document).ready(function() {
             sky.append(star);
         }
 
-        for(let i = 0; i < mwStarCount; i++) {
+        for (let i = 0; i < mwStarCount; i++) {
             // Use Math.pow to bias stars toward the top (y=0)
-            let top = Math.pow(Math.random(), 2) * 100; 
-            
+            let top = Math.pow(Math.random(), 2) * 100;
+
             // Cluster stars along a diagonal band (y = x) for Milky Way look
             let randomSpread = (Math.random() - 0.5) * 30;
             let left = (top + 10 + randomSpread) % 100;
@@ -83,10 +83,10 @@ $(document).ready(function() {
         if (!nightActive) return;
 
         const star = $('<div class="shooting-star"></div>');
-        
+
         const startX = Math.random() * 100;
         const startY = Math.random() * 100;
-        
+
         star.css({ left: startX + '%', top: startY + '%', transform: 'rotate(-35deg)' });
         sky.append(star);
 
@@ -94,8 +94,8 @@ $(document).ready(function() {
             left: (startX - 20) + '%',
             top: (startY + 20) + '%',
             opacity: 1
-        }, 800, 'linear', function() {
-            $(this).fadeOut(400, function() { $(this).remove(); });
+        }, 800, 'linear', function () {
+            $(this).fadeOut(400, function () { $(this).remove(); });
         });
     }
 
@@ -110,7 +110,7 @@ $(document).ready(function() {
 
         const daysSinceNewMoon = (now.getTime() - KNOWN_NEW_MOON.getTime()) / (1000 * 60 * 60 * 24);
         const lunarDay = daysSinceNewMoon % LUNAR_CYCLE;
-        
+
         // phase is a value from 0 to 1 (0=New, 0.5=Full, 1=New)
         return lunarDay / LUNAR_CYCLE;
     }
@@ -208,33 +208,33 @@ $(document).ready(function() {
 
         // jQuery Style State Management
         if (time >= 18 && time < 19) { // Sunset
-            sky = 'var(--sunset-sky)'; 
-            body = 'var(--sunset-sun)'; 
-            shadowOp = 0.5; 
-            textColor = 'var(--ink-dark)'; 
+            sky = 'var(--sunset-sky)';
+            body = 'var(--sunset-sun)';
+            shadowOp = 0.5;
+            textColor = 'var(--ink-dark)';
             nightActive = false;
             celestial.css('clip-path', 'none');
         } else if (time >= 7 && time < 19) { // Day
-            sky = 'var(--morning-sky)'; 
-            body = 'var(--sun)'; 
-            shadowOp = 0.2; 
-            textColor = 'var(--ink-dark)'; 
+            sky = 'var(--morning-sky)';
+            body = 'var(--sun)';
+            shadowOp = 0.2;
+            textColor = 'var(--ink-dark)';
             nightActive = false;
             celestial.css('clip-path', 'none');
         } else { // Night
-            sky = 'var(--night-sky)'; 
-            body = 'var(--moon)'; 
-            shadowOp = 0.7; 
-            textColor = 'var(--paper-light)'; 
+            sky = 'var(--night-sky)';
+            body = 'var(--moon)';
+            shadowOp = 0.7;
+            textColor = 'var(--paper-light)';
             nightActive = true;
 
             const phase = getMoonPhase(customPhase);
-            
+
             // Calculate SVG Path for the Moon Phase (Transparency)
             const size = celestial.width();
             const r = size / 2;
             const cx = r;
-            
+
             const isWaxing = phase <= 0.5;
             // Calculate the semi-minor axis for the terminator ellipse
             const rx = r * Math.abs(Math.cos(phase * 2 * Math.PI));
@@ -255,7 +255,7 @@ $(document).ready(function() {
                 // Draw terminator ellipse from bottom back to top.
                 d += ` A ${rx} ${r} 0 0 ${sweep} ${cx} 0`;
             }
-            
+
             celestial.css('clip-path', `path('${d}Z')`);
         }
 
@@ -272,7 +272,10 @@ $(document).ready(function() {
             '--mountain-2': `var(--mountain-2-${suffix})`,
             '--forest-1': `var(--forest-1-${suffix})`,
             '--forest-2': `var(--forest-2-${suffix})`,
-            '--forest-3': `var(--forest-3-${suffix})`
+            '--forest-3': `var(--forest-3-${suffix})`,
+            '--windmill-color': nightActive ? 'var(--forest-1-night)' : '#999999',
+            '--cabin-color': '#624e32ff',
+            '--cabin-door-color': '#2c2017ff'
         });
 
         $('.star').css('display', nightActive ? 'block' : 'none');
@@ -328,7 +331,7 @@ $(document).ready(function() {
         }
     }
 
-    timeSlider.on('input change touchstart touchmove', function() {
+    timeSlider.on('input change touchstart touchmove', function () {
         isRealTimePaused = true; // Manual control, so pause real-time updates
         resetTimeBtn.text('▶').attr('title', 'Resume real-time updates'); // Set icon and tooltip
         const hour = parseFloat($(this).val());
@@ -336,7 +339,7 @@ $(document).ready(function() {
         updateTimeDisplay(hour);
     });
 
-    resetTimeBtn.on('click', function() {
+    resetTimeBtn.on('click', function () {
         toggleRealTime();
     });
 
@@ -406,25 +409,143 @@ $(document).ready(function() {
     // Add debounced resize listener to regenerate scene for responsiveness
     $(window).on('resize', debounce(reinitializeScene, 250));
 
+    // --- 4th of July Fireworks (June 27 – July 4 each year, night only) ---
+    (function () {
+        function isFireworksSeason() {
+            const now = new Date();
+            const y = now.getFullYear();
+            const start = new Date(y, 5, 27);        // June 27
+            const end = new Date(y, 6, 4, 23, 59, 59); // July 4 end of day
+            return now >= start && now <= end;
+        }
+
+        if (!isFireworksSeason()) return; // not the season — bail immediately
+
+        // Create canvas overlay on the hero
+        const hero = document.querySelector('.hero');
+        const canvas = document.createElement('canvas');
+        canvas.id = 'fireworks-canvas';
+        canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:10;';
+        hero.appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+
+        function resize() {
+            canvas.width = hero.offsetWidth;
+            canvas.height = hero.offsetHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        // Patriotic palettes: red, white, blue, or all three
+        const PALETTES = [
+            ['#E8002D', '#FF4D6A', '#FF8899'],   // Red
+            ['#FFFFFF', '#E8EEFF', '#AACCFF'],   // White / Silver
+            ['#003087', '#0055CC', '#66AAFF'],   // Blue
+            ['#E8002D', '#FFFFFF', '#003087'],   // Full patriotic
+        ];
+
+        const particles = [];
+
+        function spawnFirework() {
+            if (!nightActive) return;
+
+            const x = hero.offsetWidth * (0.08 + Math.random() * 0.84);
+            const y = hero.offsetHeight * (0.06 + Math.random() * 0.42);
+            const palette = PALETTES[Math.floor(Math.random() * PALETTES.length)];
+            const count = 50 + Math.floor(Math.random() * 40);
+
+            for (let i = 0; i < count; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = 2.0 + Math.random() * 3.5;
+                particles.push({
+                    x, y,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed - 0.9, // upward bias so particles arc above burst point
+                    color: palette[Math.floor(Math.random() * palette.length)],
+                    size: 1.5 + Math.random() * 3.0,
+                    alpha: 1,
+                    decay: 0.006 + Math.random() * 0.007, // slower fade → longer life
+                    trail: []
+                });
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+
+                // Sparkle trail
+                p.trail.push({ x: p.x, y: p.y, a: p.alpha });
+                if (p.trail.length > 9) p.trail.shift();
+                for (let t = 0; t < p.trail.length; t++) {
+                    const tp = p.trail[t];
+                    ctx.save();
+                    ctx.globalAlpha = Math.max(0, (t / p.trail.length) * p.alpha * 0.35);
+                    ctx.fillStyle = p.color;
+                    ctx.beginPath();
+                    ctx.arc(tp.x, tp.y, p.size * 0.45, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+                }
+
+                // Main particle with glow
+                ctx.save();
+                ctx.globalAlpha = Math.max(0, p.alpha);
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = p.color;
+                ctx.fillStyle = p.color;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+
+                // Physics
+                p.vy += 0.022;    // gravity (reduced — lets upward particles arc high)
+                p.vx *= 0.992;    // gentle air resistance
+                p.vy *= 0.992;
+                p.x += p.vx;
+                p.y += p.vy;
+                p.alpha -= p.decay;
+                p.size *= 0.997;
+
+                if (p.alpha <= 0) particles.splice(i, 1);
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Fire first burst after a short delay, then keep scheduling
+        function scheduleNext() {
+            const delay = 1800 + Math.random() * 3800; // 1.8 – 5.6 s
+            setTimeout(() => { spawnFirework(); scheduleNext(); }, delay);
+        }
+        setTimeout(spawnFirework, 600);
+        scheduleNext();
+    })();
+
     // Scroll Indicator Click Action
-    $('#scroll-indicator').on('click', function() {
+    $('#scroll-indicator').on('click', function () {
         const text = $(this).find('.indicator-text').text().trim();
         let target = '';
         if (text.includes('Blogs')) target = '#blogs';
         else if (text.includes('Portfolio')) target = '#portfolio';
         else if (text.includes('Home')) target = '#home';
         else if (text.includes('Featured')) target = '#featured';
-        
+
         if (target) {
             document.querySelector(target).scrollIntoView({ behavior: 'smooth' });
         }
     });
 
     // Parallax Scrolling Effect
-    $(window).on('scroll', function() {
+    $(window).on('scroll', function () {
         const scrolled = $(window).scrollTop();
         const winHeight = $(window).height();
-        
+
         // Hero Section Parallax: Only animate while the hero is relatively near the viewport
         if (scrolled <= winHeight * 1.5) {
             // Celestial body (Sun/Moon) moves slowly (0.5x speed)
@@ -437,23 +558,23 @@ $(document).ready(function() {
             });
 
             // Mountains (Background) move slower to create depth
-            $('.mountain').each(function(index) {
-                const speed = 0.5 - (index * 0.15); 
+            $('.mountain').each(function (index) {
+                const speed = 0.5 - (index * 0.15);
                 $(this).css('transform', `translateY(${scrolled * speed}px)`);
             });
 
             // Forest (Foreground) moves faster
-        $('.forest:not(.forest-front)').each(function(index) {
+            $('.forest:not(.forest-front)').each(function (index) {
                 const speed = 0.2 - (index * 0.1);
                 $(this).css('transform', `translateY(${scrolled * speed}px)`);
             });
         }
 
         // Global Section Parallax (Dividers and Scraps)
-        $('.section-divider').each(function() {
+        $('.section-divider').each(function () {
             const parentTop = $(this).parent().offset().top;
             const relativeScroll = scrolled - (parentTop - winHeight);
-            
+
             if (relativeScroll > 0) {
                 // Move dividers slightly slower than the scroll to create overlap depth
                 $(this).css('transform', `translateY(${relativeScroll * 0.05}px)`);
@@ -508,14 +629,14 @@ $(document).ready(function() {
     const drawer = $('#drawer');
     const overlay = $('#drawer-overlay');
 
-    $(document).on('click', '.timeline-card', function() {
+    $(document).on('click', '.timeline-card', function () {
         const card = $(this);
         if (!drawer.length) return;
-        
+
         const title = card.find('h3').text();
         const subInfo = card.find('.blog-date, .timeline-date').text() + ' | ' + (card.find('.role').text() || 'Blog Post');
         const content = card.find('.item-detail-content').html();
-        
+
         let imageUrl = card.attr('data-image');
 
         // Fallback images specifically for "Portfolio" timeline items if data-image is missing
@@ -537,10 +658,10 @@ $(document).ready(function() {
         // Show and animate
         drawer.css('display', 'block');
         overlay.css('display', 'block');
-        
+
         // Force reflow for transition
         drawer[0].offsetHeight;
-        
+
         drawer.addClass('active');
         overlay.addClass('active');
         $('body').addClass('no-scroll');
@@ -551,7 +672,7 @@ $(document).ready(function() {
         drawer.removeClass('active');
         overlay.removeClass('active');
         $('body').removeClass('no-scroll');
-        
+
         // Hide after transition
         setTimeout(() => {
             if (!drawer.hasClass('active')) {
@@ -562,24 +683,24 @@ $(document).ready(function() {
     }
 
     $('#close-drawer, #drawer-overlay').on('click', closeDrawer);
-    $(document).on('keydown', (e) => { if(e.key === 'Escape') closeDrawer(); });
+    $(document).on('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
 
     // --- Lightbox Logic ---
-    $(document).on('click', '.blog-post-content img, .polaroid img, .souvenir-thumb', function() {
+    $(document).on('click', '.blog-post-content img, .polaroid img, .souvenir-thumb', function () {
         const src = $(this).attr('src');
         let $overlay = $('#lightbox-overlay');
-        
+
         if (!$overlay.length) {
             $overlay = $('<div id="lightbox-overlay" class="lightbox-overlay"><button class="lightbox-close">✕</button><img class="lightbox-image" src="" alt="Enlarged view"></div>');
             $('body').append($overlay);
         }
-        
+
         $overlay.find('.lightbox-image').attr('src', src);
         $overlay.addClass('active');
         $('body').addClass('no-scroll');
     });
 
-    $(document).on('click', '#lightbox-overlay', function() {
+    $(document).on('click', '#lightbox-overlay', function () {
         $(this).removeClass('active');
         $('body').removeClass('no-scroll');
     });
@@ -601,13 +722,13 @@ $(document).ready(function() {
 
     // --- Passport Stamp Generation ---
     function generateCurvedStamps() {
-        $('.stamp-wrapper').each(function() {
+        $('.stamp-wrapper').each(function () {
             const $w = $(this);
             const topText = $w.data('top');
             const bottomText = $w.data('bottom');
             const centerText = $w.data('center') || "VISITED";
             const dateText = $w.data('date');
-            
+
             const container = $w.find('.curved-text');
             const combinedText = `${topText} ★ ${bottomText} ★`.toUpperCase();
             const chars = combinedText.split('');
@@ -630,7 +751,7 @@ $(document).ready(function() {
     function renderBlogs(data, selector) {
         const container = $(selector);
         container.empty();
-        
+
         data.forEach(item => {
             const card = $(`
                 <a href="${item.link}" class="blog-card">
@@ -648,7 +769,7 @@ $(document).ready(function() {
         const container = $(selector);
         if (!container.length) return;
         container.empty();
-        
+
         Object.keys(data).forEach(categoryKey => {
             const categoryTitle = categoryKey.replace(/_/g, ' ').toUpperCase();
             const categorySection = $(`
@@ -658,7 +779,7 @@ $(document).ready(function() {
                 </div>
             `);
             const parkList = categorySection.find('.park-list');
-            
+
             data[categoryKey].forEach(parkGroup => {
                 const parkItem = $(`
                     <li class="park-item">
@@ -667,7 +788,7 @@ $(document).ready(function() {
                     </li>
                 `);
                 const tokenList = parkItem.find('.token-list');
-                
+
                 parkGroup.items.forEach(item => {
                     const isCollected = item.collected === true;
                     const statusClass = isCollected ? 'collected' : 'missing';
@@ -698,7 +819,7 @@ $(document).ready(function() {
             });
 
             // Add Accordion Click Handler
-            categorySection.on('click', '.park-item h3', function() {
+            categorySection.on('click', '.park-item h3', function () {
                 const $parent = $(this).closest('.park-item');
                 $parent.toggleClass('active');
                 $parent.find('.token-list').slideToggle(300);
@@ -717,7 +838,7 @@ $(document).ready(function() {
     function renderUnifiedTimeline(workData, eduData, selector) {
         const container = $(selector);
         container.empty();
-        
+
         const combined = [
             ...workData.map(item => ({ ...item, type: 'work' })),
             ...eduData.map(item => ({ ...item, type: 'education' }))
@@ -752,7 +873,7 @@ $(document).ready(function() {
             const startYearOnly = item.start_date.split('-')[2];
             const endDisplay = item.end_date === 'Present' ? 'Present' : item.end_date.split('-')[2];
             const dateDisplay = `${startYearOnly} - ${endDisplay}`;
-            
+
             // Calculate vertical position based on start_date
             const itemTime = parseDate(item.start_date).getTime();
             const topPercentage = ((endDate - itemTime) / (endDate - startDate)) * 100;
@@ -787,7 +908,7 @@ $(document).ready(function() {
             if ($('#featured-grid').length) renderBlogs(portfolioData.blogs.slice(-4), '#featured-grid');
             if ($('#blog-grid').length) renderBlogs(portfolioData.blogs, '#blog-grid');
         }
-        
+
         if ($('#unified-timeline').length && portfolioData.work_experience && portfolioData.education) {
             renderUnifiedTimeline(portfolioData.work_experience, portfolioData.education, '#unified-timeline');
         }
