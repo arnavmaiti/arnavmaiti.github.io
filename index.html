@@ -164,8 +164,11 @@
           fill="var(--forest-3)" />
 
 
+        <!-- Hidden terrain contour path used by JS animation -->
+        <path id="terrain-path" d="M -49 395 C 66 400 103 330 168 351 C 227 369 238 379 328 383 C 384 385 380 408 439 398 C 484 390 504 383 571 394 C 641 405 656 396.6667 716 378 C 766 364 800 400 850 400" fill="none" stroke="none" visibility="hidden" />
+
         <!-- Retro Camper Van -->
-        <g class="silhouette-camper">
+        <g id="camper-group" class="silhouette-camper">
           <path d="M 510,390 L 510,373 C 510,369 514,365 520,365 L 542,365 C 548,365 550,369 550,375 L 550,390 Z"
             fill="var(--accent-dark-clay)" />
           <circle cx="518" cy="390" r="4.5" fill="var(--forest-1)" />

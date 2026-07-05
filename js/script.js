@@ -930,4 +930,64 @@ $(document).ready(function () {
 
     // Set current year in footer
     $('#current-year').text(new Date().getFullYear());
+
+    // --- Camper Van: Follow Terrain Field Lines ---
+    (function initCamperAnimation() {
+        const terrainPath = document.getElementById('terrain-path');
+        const camperGroup = document.getElementById('camper-group');
+        if (!terrainPath || !camperGroup) return;
+
+        // The camper's local wheel-axle center in SVG coordinates
+        // Midpoint between front wheel (cx=542) and rear wheel (cx=518), at ground level (cy=390)
+        const WHEEL_X = 530;
+        const WHEEL_Y = 390;
+
+        const totalLength = terrainPath.getTotalLength();
+
+        // Start near the right of the path, moving left
+        let currentLength = totalLength * 0.8;
+        const SPEED = 0.1; // SVG units per frame
+        let direction = -1; // -1 = leftward, +1 = rightward
+        const BUFFER = 15;
+
+        function getSlopeAngle(length) {
+            const DELTA = 3;
+            const l1 = Math.max(0, length - DELTA);
+            const l2 = Math.min(totalLength, length + DELTA);
+            const p1 = terrainPath.getPointAtLength(l1);
+            const p2 = terrainPath.getPointAtLength(l2);
+            return Math.atan2(p2.y - p1.y, p2.x - p1.x) * (180 / Math.PI);
+        }
+
+        function animateCamper() {
+            currentLength += direction * SPEED;
+
+            // Bounce at ends
+            if (currentLength <= BUFFER) {
+                currentLength = BUFFER;
+                direction = 1;
+            } else if (currentLength >= totalLength - BUFFER) {
+                currentLength = totalLength - BUFFER;
+                direction = -1;
+            }
+
+            const pt = terrainPath.getPointAtLength(currentLength);
+            const angle = getSlopeAngle(currentLength);
+
+            // When driving rightward (direction=1), flip horizontally around the wheel center
+            const flip = direction === -1 ? `scale(-1,1) translate(${-2 * WHEEL_X},0)` : '';
+
+            // Compose transform:
+            // 1. Move wheel-center to terrain point and rotate to match slope
+            // 2. Apply optional horizontal flip for direction
+            camperGroup.setAttribute(
+                'transform',
+                `translate(${pt.x},${pt.y}) rotate(${angle}) translate(${-WHEEL_X},${-WHEEL_Y}) ${flip}`
+            );
+
+            requestAnimationFrame(animateCamper);
+        }
+
+        animateCamper();
+    })();
 });
