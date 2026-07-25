@@ -115,81 +115,100 @@ $(document).ready(function () {
         return lunarDay / LUNAR_CYCLE;
     }
 
-    function generateForest() {
-        const treeGroup = $('#back-trees');
-        if (!treeGroup.length) return;
+    function buildTreePath(xPos, yPos, treeWidth, treeHeight, svgNS) {
+        const midX = xPos + treeWidth / 2;
+        const topY = yPos - treeHeight;
+        const numTiers = 4;
+        const tierHeight = treeHeight / numTiers;
 
-        const svgNS = "http://www.w3.org/2000/svg";
-        const viewBoxWidth = 800;
-        const groundLevel = 280;
+        let pathData = `M ${midX} ${topY}`;
 
-        const isMobile = $(window).width() < 768;
-        const numTrees = isMobile ? 5 : 10;
+        // Left Side (Down)
+        for (let t = 1; t <= numTiers; t++) {
+            const currentY = topY + t * tierHeight;
+            const currentW = (t / numTiers) * (treeWidth / 2);
+            pathData += ` L ${midX - currentW} ${currentY}`;
+            if (t < numTiers) pathData += ` L ${midX - currentW * 0.6} ${currentY - tierHeight * 0.3}`;
+        }
 
+        // Add Trunk and Base
+        const trunkWidth = treeWidth / 5;
+        const trunkHeight = 30;
+        pathData += ` L ${midX - trunkWidth / 2} ${yPos}`;
+        pathData += ` v ${trunkHeight}`;
+        pathData += ` h ${trunkWidth}`;
+        pathData += ` v ${-trunkHeight}`;
+        pathData += ` L ${xPos + treeWidth} ${yPos}`;
+
+        // Right Side (Up from base)
+        for (let t = numTiers - 1; t >= 1; t--) {
+            const currentY = topY + t * tierHeight;
+            const currentW = (t / numTiers) * (treeWidth / 2);
+            pathData += ` L ${midX + currentW * 0.6} ${currentY - tierHeight * 0.3}`;
+            pathData += ` L ${midX + currentW} ${currentY}`;
+        }
+        pathData += ` Z`;
+
+        const path = document.createElementNS(svgNS, 'path');
+        path.setAttribute('d', pathData);
+        return path;
+    }
+
+    function placeTrees(group, svgNS, zones, numTrees, groundLevel) {
         const placedTrees = [];
-        const minGap = 5; // Minimum pixels between trees
+        const minGap = 5;
 
         for (let i = 0; i < numTrees; i++) {
             const treeWidth = 30 + Math.random() * 20;
             const treeHeight = 50 + Math.random() * 80;
             const yPos = groundLevel + Math.random() * 20;
+
+            // Pick a random zone and a random x within that zone
+            const zone = zones[Math.floor(Math.random() * zones.length)];
             let xPos;
             let overlaps;
             let attempts = 0;
 
             do {
-                xPos = Math.random() * (viewBoxWidth - treeWidth);
+                xPos = zone.min + Math.random() * Math.max(0, zone.max - zone.min - treeWidth);
                 overlaps = false;
                 for (const placed of placedTrees) {
-                    // Check for overlap, including the gap
                     if (xPos < placed.x + placed.width + minGap && xPos + treeWidth + minGap > placed.x) {
                         overlaps = true;
                         break;
                     }
                 }
                 attempts++;
-            } while (overlaps && attempts < 100); // Try 100 times to find a spot
+            } while (overlaps && attempts < 100);
 
             if (!overlaps) {
                 placedTrees.push({ x: xPos, width: treeWidth });
-
-                const midX = xPos + treeWidth / 2;
-                const topY = yPos - treeHeight;
-                const numTiers = 4;
-                const tierHeight = treeHeight / numTiers;
-
-                let pathData = `M ${midX} ${topY}`;
-
-                // Left Side (Down)
-                for (let t = 1; t <= numTiers; t++) {
-                    const currentY = topY + t * tierHeight;
-                    const currentW = (t / numTiers) * (treeWidth / 2);
-                    pathData += ` L ${midX - currentW} ${currentY}`;
-                    if (t < numTiers) pathData += ` L ${midX - currentW * 0.6} ${currentY - tierHeight * 0.3}`;
-                }
-
-                // Add Trunk and Base
-                const trunkWidth = treeWidth / 5;
-                const trunkHeight = 30;
-                pathData += ` L ${midX - trunkWidth / 2} ${yPos}`; // to left of trunk
-                pathData += ` v ${trunkHeight}`; // down
-                pathData += ` h ${trunkWidth}`;  // across
-                pathData += ` v ${-trunkHeight}`; // up
-                pathData += ` L ${xPos + treeWidth} ${yPos}`; // to bottom-right of canopy
-
-                // Right Side (Up from base)
-                for (let t = numTiers - 1; t >= 1; t--) {
-                    const currentY = topY + t * tierHeight;
-                    const currentW = (t / numTiers) * (treeWidth / 2);
-                    pathData += ` L ${midX + currentW * 0.6} ${currentY - tierHeight * 0.3}`;
-                    pathData += ` L ${midX + currentW} ${currentY}`;
-                }
-                pathData += ` Z`;
-
-                const path = document.createElementNS(svgNS, 'path');
-                path.setAttribute('d', pathData);
-                treeGroup.append(path);
+                group.append(buildTreePath(xPos, yPos, treeWidth, treeHeight, svgNS));
             }
+        }
+    }
+
+    function generateForest() {
+        const treeGroup = $('#back-trees');
+        if (!treeGroup.length) return;
+
+        const svgNS = "http://www.w3.org/2000/svg";
+        const viewBoxWidth = 800;
+        const isMobile = $(window).width() < 768;
+
+        // Back trees — spread across full width
+        const numBackTrees = isMobile ? 5 : 10;
+        placeTrees(treeGroup, svgNS,
+            [{ min: 0, max: viewBoxWidth }],
+            numBackTrees, 280);
+
+        // Middle trees — left side and right side only
+        const middleGroup = $('#middle-trees');
+        if (middleGroup.length) {
+            const numMiddleTrees = isMobile ? 4 : 8;
+            placeTrees(middleGroup, svgNS,
+                [{ min: -10, max: 160 }, { min: 640, max: 810 }],
+                numMiddleTrees, 270);
         }
     }
 
@@ -347,6 +366,7 @@ $(document).ready(function () {
         // Clear out old, dynamically generated elements that depend on screen size
         $('.star, .shooting-star').remove();
         $('#back-trees').empty();
+        $('#middle-trees').empty();
 
         // Re-run the generation functions; they will re-evaluate the window width
         initMilkyWay();
@@ -559,6 +579,12 @@ $(document).ready(function () {
 
             // Mountains (Background) move slower to create depth
             $('.mountain').each(function (index) {
+                const speed = 0.5 - (index * 0.15);
+                $(this).css('transform', `translateY(${scrolled * speed}px)`);
+            });
+
+            // Waterfall moves with mountains
+            $('.waterfall').each(function (index) {
                 const speed = 0.5 - (index * 0.15);
                 $(this).css('transform', `translateY(${scrolled * speed}px)`);
             });

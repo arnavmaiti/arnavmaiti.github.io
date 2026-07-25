@@ -78,6 +78,24 @@
           d="M -50 450 C -33 340 -36 275 8 224 C 30 201 57 214 74 193 C 94 169 113 202 134 203 c 55 -1 72 -87 98 -108 C 249 84 258 114 317 107 C 359 99 372 43 413 26 C 436 17 463 109 513 111 C 557 112 562 179 610 180 C 662 180 692 97 716 107 C 758 128 794 206 850 210 c 43 2 30 164 61 240 Z"
           fill="var(--mountain-1)" />
       </svg>
+      <svg class="waterfall waterfall-back" viewBox="0 0 800 451" preserveAspectRatio="none">
+        <defs>
+          <clipPath id="wfall-back-clip">
+            <path d="M 500 109 C 522 129 481 297 498 451 L 563 451 C 543 440 553 168 523 114 C 518 106 499 109 500 109 Z" />
+          </clipPath>
+        </defs>
+        <!-- Waterfall body -->
+        <path d="M 500 109 C 522 129 481 297 498 451 L 563 451 C 543 440 553 168 523 114 C 518 106 499 109 500 109 Z"
+          fill="var(--waterfall-back)" />
+        <!-- Moving white water lines, clipped to the waterfall shape -->
+        <g clip-path="url(#wfall-back-clip)">
+          <line class="wfall-line wfall-line-1" x1="507" y1="109" x2="504" y2="451" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.55" />
+          <line class="wfall-line wfall-line-2" x1="516" y1="109" x2="511" y2="451" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.4"  />
+          <line class="wfall-line wfall-line-3" x1="526" y1="109" x2="522" y2="451" stroke="white" stroke-width="2"   stroke-linecap="round" stroke-opacity="0.5"  />
+          <line class="wfall-line wfall-line-4" x1="537" y1="109" x2="534" y2="451" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.35" />
+          <line class="wfall-line wfall-line-5" x1="548" y1="109" x2="546" y2="451" stroke="white" stroke-width="2"   stroke-linecap="round" stroke-opacity="0.45" />
+        </g>
+      </svg>
       <svg class="mountain mtn-front" viewBox="0 0 800 400" preserveAspectRatio="none">
         <path
           d="M 0 400 L 0 220 C 23 193 53 203 70 180 C 87 157 112 112 142 104 C 162 100 197 188 220 160 C 246 130 297 162 316 145 C 347 124 404 69 424 68 C 451 68 487 169 533 174 C 576 178 607 115 630 115 C 655 115 667 189 740 190 C 764 189 780 162 800 160 L 800 400 Z"
@@ -124,6 +142,7 @@
         <path
           d="M -50 450 L -50 280 C 16 262 54 288 97 296 C 166 305 162 289 195 294 C 274 309 250 314 326 295 C 389 279 433 306 487 289 C 549 270 615 319 661 298 C 702 280 742 272 770 274 C 801 278 836 293 850 292 L 850 450 Z"
           fill="var(--forest-2)" />
+        <g id="middle-trees" fill="var(--forest-1)"></g>
         <!-- Cozy Cabin -->
         <g class="silhouette-cabin">
           <rect x="240" y="275" width="5" height="14" fill="var(--cabin-door-color)" />
@@ -165,7 +184,9 @@
 
 
         <!-- Hidden terrain contour path used by JS animation -->
-        <path id="terrain-path" d="M -49 395 C 66 400 103 330 168 351 C 227 369 238 379 328 383 C 384 385 380 408 439 398 C 484 390 504 383 571 394 C 641 405 656 396.6667 716 378 C 766 364 800 400 850 400" fill="none" stroke="none" visibility="hidden" />
+        <path id="terrain-path"
+          d="M -49 395 C 66 400 103 330 168 351 C 227 369 238 379 328 383 C 384 385 380 408 439 398 C 484 390 504 383 571 394 C 641 405 656 396.6667 716 378 C 766 364 800 400 850 400"
+          fill="none" stroke="none" visibility="hidden" />
 
         <!-- Retro Camper Van -->
         <g id="camper-group" class="silhouette-camper">
